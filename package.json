@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "mkdir -p build/ source/pandoc/ source/style/modules/ source/style/partials/ source/themes/cards/simple/ source/themes/cards/missing/",
-    "css": "npx lessc source/style/main.less ./build/main.css",
+    "css": "npx lessc source/style/main.less ./build/style/main.css",
     "pandoc": "npm run pandoc-pre && npm run simple-data && npm run missing-data",
-    "pandoc-pre": "pandoc source/pandoc/pre.md -o ./build/pre.html",
-    "simple-data": "pandoc --from markdown --to html source/themes/cards/simple/simple.md -s -o ./build/simple-data.html",
-    "missing-data": "pandoc --from markdown --to html source/themes/cards/missing/missing.md -s -o ./build/missing-data.html",
+    "pandoc-pre": "pandoc source/pandoc/pre.md -o ./build/data/pre.html",
+    "simple-data": "pandoc --from markdown --to html source/themes/cards/simple/simple.md -s -o ./build/data/simple-data.html",
+    "missing-data": "pandoc --from markdown --to html source/themes/cards/missing/missing.md -s -o ./build/data/missing-data.html",
     "build": "npm run setup && npm run css"
   },
   "repository": {
@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/badlydrawnrob/anki#readme",
   "devDependencies": {
+    "anki": "github:badlydrawnrob/anki#887ec8a",
     "less": "^4.2.0",
-    "print-first-css": "github:badlydrawnrob/print-first-css#dafa5ae",
-    "anki": "github:badlydrawnrob/anki#2ed588d"
+    "print-first-css": "github:badlydrawnrob/print-first-css#dafa5ae"
   }
 }
