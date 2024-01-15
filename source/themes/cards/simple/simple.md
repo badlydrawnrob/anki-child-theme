@@ -5,50 +5,62 @@ title: Simple Card data
 
 ## ★ Title
 
-What will each <code>residents[<b>'key'</b>]</code> print out?
+Will this return `True` or `False`?
 
 
 ## ☆ Subtitle
 
-Dictionaries
+Comparison
 
 
 ## ☆ Syntax (inline code)
 
-d = {<b>'key'</b>: <i>value</i>}
+== ++
 
 
 ## ★ Sample (code block or image)
 
-```python
-residents = {'Puffin' : 104, 'Sloth' : 105, 'Burmese Python' : 106}
+```elm
+walkies = "taking a walk " ++ "with the dog. The time is"
 
-print(residents['Puffin'])
-print(residents['Sloth'])
-print(residents['Burmese Python'])
+walkies == 11
 ```
 
 
 ## ★ Key point (code block or image)
 
-```text
-104
-105
-106
+```terminal
+-- TYPE MISMATCH ---------------------------------------------------------- REPL
+
+I need both sides of (==) to be the same type:
+
+4|   walkies == 11
+     ^^^^^^^^^^^^^
+The left side of (==) is:
+
+    String
+
+But the right side is:
+
+    number
+
+Different types can never be equal though! Which side is messed up?
+
+Hint: Try using String.toInt to convert it to an integer?
 ```
 
 
 ## ★ Key point notes
 
-Access a **dictionary** item with it's `key`, which returns it's `value`.
-
-A dictionary is similar to a list, but you access values by looking up a key instead of an index. A key can be any string or number. Dictionaries are enclosed in curly braces `{ }`.
+1. The `++` concatonates strings (and only strings)
+2. The `==` comparison operator compares values
+    - These values **must** be the same type!
 
 
 
 ## ✎ Other notes
 
-**Warning:** [Never search for a value in a dictionary using a for loop](https://jeffknupp.com/blog/2015/08/30/python-dictionaries)!
+See on [Beginning Elm](https://elmprogramming.com/comparison.html)
 
 
 ## ✎ Markdown
