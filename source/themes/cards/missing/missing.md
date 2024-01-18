@@ -6,10 +6,10 @@ card type: |
     - A missing function or expression you have to guess
     - A missing input or output to remember
 card key:
-    ★ Required\n
-    ☆ Optional (recommended)\n
-    ✎ Optional (notes, markdown)
-    ⤷ Field Type
+    ★ Required,
+    ☆ Optional (recommended),
+    ✎ Optional (notes, markdown),
+    ⤷ Field Type,
 docs:
     http://tinyurl.com/anki-missing-card
 notes:
