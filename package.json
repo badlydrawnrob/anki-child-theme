@@ -1,6 +1,6 @@
 {
   "name": "anki-child-theme",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Extending the Anki Themes repo",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "missing-data": "pandoc --from markdown --to html source/themes/cards/missing/missing.md -s -o ./build/data/missing-data.html",
     "missing-data-stripped": "pandoc source/themes/cards/missing/missing-stripped.md -o ./build/data/missing-stripped.html",
     "readme": "pandoc --from markdown --to html README.md -s -o ./build/README.html",
-    "build": "npm run css && run pandoc"
+    "build": "npm run css && npm run pandoc"
   },
   "repository": {
     "type": "git",

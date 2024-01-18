@@ -216,5 +216,35 @@ app)
 <li><code>node_modules/anki/source/style/partials/*.less</code></li>
 </ul></li>
 </ul>
+<h2 id="compiling-the-card-data">Compiling the card data</h2>
+<blockquote>
+<p>🚀 All systems go!</p>
+</blockquote>
+<ol type="1">
+<li>For the default compiler
+<ul>
+<li><code>npm run pandoc</code></li>
+</ul></li>
+<li>For <a
+href="https://github.com/badlydrawnrob/anki-child-theme/issues/9">the
+stripped down</a> compiler<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a>
+<ul>
+<li>Add a little more code to <code>package.json</code></li>
+<li><code>npm run pandoc-stripped</code></li>
+</ul></li>
+</ol>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The stripped down version compiles a lot less code, so
+is easier to read. This comes with the trade off that it doesn’t look as
+pretty in the browser (for instance, the code highlighting
+<code>.classes</code> will be added, but you won’t be able to preview it
+in the browser).<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
 </body>
 </html>
