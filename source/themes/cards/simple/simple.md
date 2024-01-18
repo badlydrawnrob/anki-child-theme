@@ -4,10 +4,10 @@ title:
 card type: |
   A simple `question->answer` card;
   we're asking the question: "what does this code do?", e.g:
-card list:
+
   - A function with an output you have to guess,
   - A class with a method that you need to call.
-card key:
+card key: |
   ★ Required,
   ☆ Optional (recommended),
   ✎ Optional (notes, markdown),
@@ -15,25 +15,51 @@ card key:
 docs:
   http://tinyurl.com/anki-simple-card
 notes:
-  View compiled file in your text editor or a Chrome-type browser
+  View compiled file in your text editor or a Chrome-type browser.
+  The `## H2` titles represent Anki text fields, with the contents below.
 ---
 
 
+<!-- -------------------------------------------------------------------------
+    ★ Title
+
+    ⤷ `string` (auto wrapped with a `H1` tag)
+-------------------------------------------------------------------------- -->
 ## ★ Title
 
 In this example, `viewThumbnail` only takes one argument; `model.selectedUrl`. Yet, it still works! Explain why.
 
 
+<!-- -------------------------------------------------------------------------
+    ★ Subtitle
+
+    ⤷ `string` (auto wrapped with a `H2` tag)
+-------------------------------------------------------------------------- -->
 ## ☆ Subtitle
 
 A partial function
 
 
+<!-- -------------------------------------------------------------------------
+    ☆ Syntax (inline code)
+
+    ⤷ `code string` (auto wrapped with <p><code> tag)
+-------------------------------------------------------------------------- -->
 ## ☆ Syntax (inline code)
 
-(viewThumbnail selectedUrl thumb)
+`(viewThumbnail selectedUrl thumb)`
 
 
+<!-- -------------------------------------------------------------------------
+    ★ Sample (code block or image)
+
+    ⤷ `pre block | image`
+
+      | Requires `markdown` fenced code block;
+
+      A markdown fenced code block that will compile to our highlighted
+      code with Pandoc. What does this code do?
+-------------------------------------------------------------------------- -->
 ## ★ Sample (code block or image)
 
 ```elm
@@ -71,6 +97,16 @@ viewThumbnail selectedUrl thumb =
 ```
 
 
+<!-- -------------------------------------------------------------------------
+    ★ Key point (code block or image)
+
+    ⤷ `pre block | image`
+
+      | Requires `markdown` fenced code block;
+
+      A markdown fenced code block that will compile to our highlighted
+      code with Pandoc. The output or answer to the above question.
+-------------------------------------------------------------------------- -->
 ## ★ Key point (code block or image)
 
 ```elm
@@ -94,6 +130,11 @@ viewThumbnail "1.jpeg"
 ```
 
 
+<!-- -------------------------------------------------------------------------
+    ★ Key point notes
+
+    ⤷ `rich html`
+-------------------------------------------------------------------------- -->
 ## ★ Key point notes
 
 This is a big chunk of code!!! It's quite simple though:
@@ -110,12 +151,28 @@ This is a big chunk of code!!! It's quite simple though:
 7. Our `viewThumbnail` function also checks the `model.selectedUrl`, and adds a `"selected"` class if it matches.
 
 
+<!-- -------------------------------------------------------------------------
+    ★ Other notes
 
+    ⤷ `rich html`
+-------------------------------------------------------------------------- -->
 ## ✎ Other notes
 
 View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the function. Here's some [other curried function examples](https://www.codingexercises.com/guides/quickstart-elm-part-7) too.
 
 
+<!-- -------------------------------------------------------------------------
+    ★ Markdown
+
+    ⤷ `raw text`
+
+      Do not add the compiled HTML to your card, rather, use the raw text
+      Markdown fenced code block. This makes for easier editing of a card
+      later on.
+
+      Warning: may increase card file size
+        @ https://github.com/badlydrawnrob/anki/issues/116
+-------------------------------------------------------------------------- -->
 ## ✎ Markdown
 
 ```elm
@@ -171,3 +228,5 @@ viewThumbnail "1.jpeg"
 <function>
     : { a | url : String } -> Html { data : String, description : String }
 ```
+
+<!-- End of card ==========================================================-->

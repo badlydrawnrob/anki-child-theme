@@ -5,7 +5,7 @@ card type: |
     A question with a [missing] word;
     - A missing function or expression you have to guess,
     - A missing input or output to remember.
-card key:
+card key: |
     ★ Required,
     ☆ Optional (recommended),
     ✎ Optional (notes, markdown),
@@ -13,7 +13,8 @@ card key:
 docs:
     http://tinyurl.com/anki-missing-card
 notes:
-    View compiled file in your text editor or a Chrome-type browser
+    View compiled file in your text editor or a Chrome-type browser.
+    The `## H2` titles represent Anki text fields, with the contents below.
 ---
 
 
@@ -22,7 +23,9 @@ notes:
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-## ★ What kind of function do we call this? What will it output?
+## ★ Title
+
+What kind of function do we call this? What will it output?
 
 
 <!-- -------------------------------------------------------------------------
@@ -30,10 +33,14 @@ notes:
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## ☆ What do we call this?
+## ☆ Subtitle
+
+What do we call this?
 
 
 <!-- -------------------------------------------------------------------------
+    ☆ Syntax (inline code)
+
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
 ## ☆ Syntax (inline code)
@@ -46,24 +53,23 @@ notes:
 
     ⤷ `pre block | image`
 
-        | Requires `markdown` fenced code block;
-        | Requires `{{c1:cloze}}` tag(s))
+      | Requires `markdown` fenced code block;
+      | Requires `{{c1:cloze}}` tag(s))
 
-        A markdown fenced code block that will compile to our highlighted
-        code with Pandoc. Make sure to add at least one cloze deletion:
+      A markdown fenced code block that will compile to our highlighted
+      code with Pandoc. Make sure to add at least one cloze deletion:
 
-            `{{c1:the answer:HINT TEXT}}`
+        `{{c1:the answer:HINT TEXT}}`
 
-        Here's an example cloze card:
+      Here's an example cloze card:
 
-            @ https://codepen.io/testuser-247585903/pen/BabRjvb
+        @ https://codepen.io/testuser-247585903/pen/BabRjvb
 
-        You can add cloze deletion tags to the fenced code block and
-        they should work fine in Anki. You can also:
+      You can add cloze deletion tags to the fenced code block and
+      they should work fine in Anki. You can also:
 
-        1. `Toggle HTML Editor ⌘⇧X` (`‹›`) to enable rich text preview
-        2. Press the `[...]` or `[...]+` button to add a cloze deletion
-
+      1. `Toggle HTML Editor ⌘⇧X` (`‹›`) to enable rich text preview
+      2. Press the `[...]` or `[...]+` button to add a cloze deletion
 -------------------------------------------------------------------------- -->
 ## ★ Key point (code block or image)
 
@@ -114,17 +120,17 @@ But _why_ is this useful, I hear you ask? [Here's some examples](https://www.cod
 
     ⤷ `raw text`
 
-        Do not add the compiled HTML to your card, rather, use the raw text
-        Markdown fenced code block. This makes for easier editing of a card
-        later on.
+      Do not add the compiled HTML to your card, rather, use the raw text
+      Markdown fenced code block. This makes for easier editing of a card
+      later on.
 
-        Please be careful:
+      Please be careful:
 
-            Warning: remove all `{{c1:cloze}}` cloze deletion tags!
+        Warning: remove all `{{c1:cloze}}` cloze deletion tags!
 
-        If you save your card with cloze deletion tags in the `★ Markdown`
-        field, Anki will throw an error, and you might not be able to save
-        your card.
+      If you save your card with cloze deletion tags in the `★ Markdown`
+      field, Anki will throw an error, and you might not be able to save
+      your card.
 -------------------------------------------------------------------------- -->
 ## ✎ Markdown
 
@@ -145,6 +151,5 @@ timesByTwo num = aDifferentAdder 2 num
 timesByTwo 5
 -- 10 : number
 ```
-
 
 <!-- End of card ==========================================================-->
