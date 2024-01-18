@@ -1,20 +1,21 @@
 ---
 title:
-    Missing! Card Data
+  Missing! Card Data
 card type: |
-    A question with a [missing] word;
-    - A missing function or expression you have to guess,
-    - A missing input or output to remember.
+  A question with a [missing] word;
+  - A missing function or expression you have to guess,
+  - A missing input or output to remember.
 card key: |
-    ★ Required,
-    ☆ Optional (recommended),
-    ✎ Optional (notes, markdown),
-    ⤷ Field Type.
+  ★ Required,
+  ☆ Optional (recommended),
+  ✎ Optional (notes, markdown),
+  ⤷ Field Type.
 docs:
-    http://tinyurl.com/anki-missing-card
+  http://tinyurl.com/anki-missing-card
 notes:
-    View compiled file in your text editor or a Chrome-type browser.
-    The `## H2` titles represent Anki text fields, with the contents below.
+  View compiled file in your text editor or a Chrome-type browser.
+  The `## H2` titles represent Anki text fields, with the contents below.
+css: ../style/main.css
 ---
 
 
