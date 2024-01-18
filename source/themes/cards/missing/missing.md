@@ -1,15 +1,15 @@
 ---
 title:
-    Missing! Card data
+    Missing! Card Data
 card type: |
     A question with a [missing] word
     - A missing function or expression you have to guess
     - A missing input or output to remember
-card key: |
-    - ★ Required
-    - ☆ Optional (recommended)
-    - ✎ Optional (notes, markdown)
-    - ⤷ Field Type
+card key:
+    - field: ★ Required
+    - field: ☆ Optional (recommended)
+    - field: ✎ Optional (notes, markdown)
+    - field: ⤷ Field Type
 docs:
     http://tinyurl.com/anki-missing-card
 notes:
