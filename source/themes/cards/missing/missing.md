@@ -1,4 +1,7 @@
 ---
+output:
+    github_document:
+        keep_html: true
 title: Missing! Card data
 type: A question with a [missing] word
       - A missing function or expression you have to guess
