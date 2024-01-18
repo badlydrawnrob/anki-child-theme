@@ -1,17 +1,20 @@
 ---
 title:
     Missing! Card data
-type:
+card type:
     A question with a [missing] word
-    type news:
-        - A missing function or expression you have to guess
-        - A missing input or output to remember
-key: ★ Required
-     ☆ Optional (recommended)
-     ✎ Optional (notes, markdown)
-     ⤷ Field Type
-docs: http://tinyurl.com/anki-missing-card
-notes: View compiled file in your text editor or a Chrome-type browser
+card notes:
+    - A missing function or expression you have to guess
+    - A missing input or output to remember
+card key:
+    - ★ Required
+    - ☆ Optional (recommended)
+    - ✎ Optional (notes, markdown)
+    - ⤷ Field Type
+docs:
+    http://tinyurl.com/anki-missing-card
+notes:
+    View compiled file in your text editor or a Chrome-type browser
 ---
 
 
