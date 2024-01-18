@@ -1,11 +1,11 @@
 ---
-output:
-    github_document:
-        keep_html: false
-title: Missing! Card data
-type: A question with a [missing] word
-      - A missing function or expression you have to guess
-      - A missing input or output to remember
+title:
+    Missing! Card data
+type:
+    A question with a [missing] word
+    type news:
+        - A missing function or expression you have to guess
+        - A missing input or output to remember
 key: ★ Required
      ☆ Optional (recommended)
      ✎ Optional (notes, markdown)
