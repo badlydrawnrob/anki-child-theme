@@ -1,5 +1,21 @@
 ---
-title: Simple Card data
+title:
+  Simple Card Data
+card type: |
+  A simple `question->answer` card;
+  we're asking the question: "what does this code do?", e.g:
+
+  - A function with an output you have to guess.
+  - A class with a method that you need to call
+card key:
+  ★ Required,
+  ☆ Optional (recommended),
+  ✎ Optional (notes, markdown),
+  ⤷ Field Type.
+docs:
+  http://tinyurl.com/anki-simple-card
+notes:
+  View compiled file in your text editor or a Chrome-type browser
 ---
 
 

@@ -1,4 +1,6 @@
-# anki-child-theme
+---
+title: Anki Child Theme
+---
 
 An extension of [Anki programming theme](https://github.com/badlydrawnrob/anki)
 
@@ -10,10 +12,10 @@ An extension of [Anki programming theme](https://github.com/badlydrawnrob/anki)
     - [`simple.html`](../node_modules/anki/build/demo/simple.html)
     - [`missing.html`](../node_modules/anki/build/demo/missing.html)
 - **Documentation**
-    - [Simple](https://github.com/badlydrawnrob/anki/blob/master/source/docs/highlight/index.md)
-    - [Missing!](https://github.com/badlydrawnrob/anki/blob/master/source/docs/missing/index.md)
+    - [Simple](https://github.com/badlydrawnrob/anki/blob/master/source/docs/highlight/index.md) card
+    - [Missing!](https://github.com/badlydrawnrob/anki/blob/master/source/docs/missing/index.md) card
     - [Add color to your code](https://github.com/badlydrawnrob/anki/blob/master/source/docs/highlight/index.md)
-    - [🧑‍🎓 the professional way](https://github.com/badlydrawnrob/anki/blob/master/source/docs/advanced/index.md) (advanced documentation)
+    - 🧑‍🎓 [The professional way](https://github.com/badlydrawnrob/anki/blob/master/source/docs/advanced/index.md) (advanced documentation)
 - **Anki Card `HTML` templates** (for the Anki app)
     - `node_modules/anki/source/themes/cards/simple/*.moustache`
     - `node_modules/anki/source/themes/cards/missing/*.moustache`
