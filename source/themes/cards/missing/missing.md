@@ -3,7 +3,6 @@ title:
     Missing! Card data
 card type:
     A question with a [missing] word
-card notes:
     - A missing function or expression you have to guess
     - A missing input or output to remember
 card key:
