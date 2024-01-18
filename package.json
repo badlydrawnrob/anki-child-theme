@@ -7,9 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "css": "npx lessc source/style/main.less ./build/style/main.css",
     "pandoc": "npm run readme && npm run pandoc-pre && npm run simple-data && npm run missing-data",
+    "pandoc-stripped": "npm run simple-data-stripped && npm run missing-data-stripped",
     "pandoc-pre": "pandoc source/pandoc/pre.md -o ./build/data/pre.html",
     "simple-data": "pandoc --from markdown --to html source/themes/cards/simple/simple.md -s -o ./build/data/simple-data.html",
+    "simple-data-stripped": "pandoc source/themes/cards/simple/simple-stripped.md -o ./build/data/simple-stripped.html",
     "missing-data": "pandoc --from markdown --to html source/themes/cards/missing/missing.md -s -o ./build/data/missing-data.html",
+    "missing-data-stripped": "pandoc source/themes/cards/missing/missing-stripped.md -o ./build/data/missing-stripped.html",
     "readme": "pandoc --from markdown --to html README.md -s -o ./build/README.html",
     "build": "npm run css && run pandoc"
   },
