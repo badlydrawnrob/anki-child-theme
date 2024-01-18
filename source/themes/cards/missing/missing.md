@@ -1,11 +1,11 @@
 ---
 title:
     Missing! Card data
-card type:
+card type: |
     A question with a [missing] word
     - A missing function or expression you have to guess
     - A missing input or output to remember
-card key:
+card key: |
     - ★ Required
     - ☆ Optional (recommended)
     - ✎ Optional (notes, markdown)
