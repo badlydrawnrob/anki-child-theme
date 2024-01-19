@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# Here we use an _anonymous function_ to loop through our model. What's an easier way to call the `viewThumbnail`?
+# Here's an example of a simple `record`. How do we change the name?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Anonymous function
+## Record
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`anonymous = \x -> x * 2`
+`{ name = "string" }`
 
 
 <!-- -------------------------------------------------------------------------
@@ -61,13 +61,7 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 ```elm
-..
-div [ id "thumbnails" ]
-        (List.map -- viewThumbnail string record
-          (\photo -> viewThumbnail model.selectedUrl photo)
-          model.photos  -- List of `{ url = "1.jpeg" }`
-        )
-..
+steve = { name = "Wozniak" }  -- Change me!
 ```
 
 
@@ -85,10 +79,11 @@ div [ id "thumbnails" ]
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 ```elm
-(List.map
-  (viewThumbnail model.selectedUrl) -- Use a CURRIED function!
-    model.photos
-)
+-- Change me!
+{ steve | name = "Jobs" }
+-- { name = "Jobs" } : { name : String }
+steve
+-- { name = "Wozniak" } : { name : String }
 ```
 
 
@@ -97,11 +92,7 @@ div [ id "thumbnails" ]
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-1. `viewThumbnail` gets partially applied (with one argument)
-2. This is also called a **curried function**
-3. `model.photos` contains a list of records
-4. `List.map` will cycle through the model
-5. And pass `viewThumbnail` a record as it's second argument
+The `|` pipe operator is how we "change" the name of our record. Records are **immutable**, so it doesn't really _change_ it, but returns a **new** record!
 
 
 <!-- -------------------------------------------------------------------------
