@@ -1,6 +1,6 @@
 {
   "name": "anki-child-theme",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Extending the Anki Themes repo",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,9 @@
     "pandoc-pre": "pandoc source/pandoc/pre.md -o ./build/data/pre.html",
     "pandoc-pre-reverse": "pandoc source/pandoc/pre.html -o ./build/data/pre.md",
     "simple-data": "pandoc --from markdown --to html source/themes/cards/simple/simple.md -s -o ./build/data/simple-data.html",
-    "simple-data-stripped": "pandoc source/themes/cards/simple/simple-stripped.md -o ./build/data/simple-data-stripped.html",
+    "simple-data-stripped": "pandoc --from markdown-auto_identifiers source/themes/cards/simple/simple-stripped.md -o ./build/data/simple-data-stripped.html",
     "missing-data": "pandoc --from markdown --to html source/themes/cards/missing/missing.md -s -o ./build/data/missing-data.html",
-    "missing-data-stripped": "pandoc source/themes/cards/missing/missing-stripped.md -o ./build/data/missing-data-stripped.html",
+    "missing-data-stripped": "pandoc --from markdown-auto_identifiers source/themes/cards/missing/missing-stripped.md -o ./build/data/missing-data-stripped.html",
     "readme": "pandoc --from markdown --to html README.md -s -o ./build/README.html",
     "build": "npm run css && npm run pandoc"
   },

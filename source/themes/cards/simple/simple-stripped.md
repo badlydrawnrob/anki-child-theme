@@ -19,10 +19,6 @@
         ✎ Optional (notes, markdown)
         ⤷ Field Type
 
-    - Notes:
-        View compiled file in your text editor or a Chrome-type browser.
-        The `## H2` titles represent Anki text fields, with the contents below.
-
 ========================================================================== -->
 
 
@@ -31,15 +27,15 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# Here we use an _anonymous function_ to loop through our model. What's an easier way to call the `viewThumbnail`?
+# In this example, `viewThumbnail` only takes one argument; `model.selectedUrl`. Yet, it still works! Explain why.
 
 
 <!-- -------------------------------------------------------------------------
-    ☆ Subtitle
+    ★ Subtitle
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Anonymous function
+## A partial function
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +43,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`anonymous = \x -> x * 2`
+Already wrapped in a `<p><code>` tag. A one liner: Some very short text for syntax.
 
 
 <!-- -------------------------------------------------------------------------
@@ -62,12 +58,17 @@
 -------------------------------------------------------------------------- -->
 ```elm
 ..
-div [ id "thumbnails" ]
-        (List.map -- viewThumbnail string record
-          (\photo -> viewThumbnail model.selectedUrl photo)
-          model.photos  -- List of `{ url = "1.jpeg" }`
+
+-- View --
+view model =
+  ..
+    ..
+    , div [ id "thumbnails" ]
+        (List.map
+          (viewThumbnail model.selectedUrl)  -- Apply the function
+          model.photos
         )
-..
+    ..
 ```
 
 
@@ -85,10 +86,11 @@ div [ id "thumbnails" ]
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 ```elm
-(List.map
-  (viewThumbnail model.selectedUrl) -- Use a CURRIED function!
-    model.photos
-)
+viewThumbnail selectedUrl thumb =
+  img [ src (urlPrefix ++ thumb.url)
+      , classList [ ("selected", selectedUrl == thumb.url) ]
+      ..
+      ] []
 ```
 
 
@@ -97,23 +99,24 @@ div [ id "thumbnails" ]
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-1. `viewThumbnail` gets partially applied (with one argument)
-2. This is also called a **curried function**
-3. `model.photos` contains a list of records
-4. `List.map` will cycle through the model
-5. And pass `viewThumbnail` a record as it's second argument
+This is a big chunk of code!!! It's quite simple though:
+
+1. We _partially_ apply `viewThumbnail` passing only one argument (a `"string"`)
+2. `List.map` takes a function and a list
+    - `model.photos` gives us a list of records
+3. `List.map` cycles through the records
 
 
 <!-- -------------------------------------------------------------------------
-    ✎ Other notes
+    ★ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the function. [Here's what `List.map` does](https://elmprogramming.com/list.html#mapping-a-list). Here's some [other curried function examples](https://www.codingexercises.com/guides/quickstart-elm-part-7).
+View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the function. Here's some [other curried function examples](https://www.codingexercises.com/guides/quickstart-elm-part-7) too.
 
 
 <!-- -------------------------------------------------------------------------
-    ✎ Markdown
+    ★ Markdown
 
     ⤷ `raw text`
 
@@ -126,16 +129,15 @@ View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the 
 -------------------------------------------------------------------------- -->
 ```elm
 ..
-div [ id "thumbnails" ]
-        (List.map -- viewThumbnail string record
-          (\photo -> viewThumbnail model.selectedUrl photo)
-          model.photos  -- List of `{ url = "1.jpeg" }`
+
+-- View --
+view model =
+  ..
+    ..
+    , div [ id "thumbnails" ]
+        (List.map
+          (viewThumbnail model.selectedUrl)  -- Apply the function
+          model.photos
         )
-..
-```
-```elm
-(List.map
-  (viewThumbnail model.selectedUrl) -- Use a CURRIED function!
-    model.photos
-)
+    ..
 ```
