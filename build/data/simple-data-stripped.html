@@ -19,27 +19,30 @@
         ✎ Optional (notes, markdown)
         ⤷ Field Type
 
+    - Notes:
+        View compiled file in your text editor or a Chrome-type browser.
+        The `## H2` titles represent Anki text fields, with the contents below.
+
 ========================================================================== -->
 <!-- -------------------------------------------------------------------------
     ★ Title
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-<h1>In this example, <code>viewThumbnail</code> only takes one argument;
-<code>model.selectedUrl</code>. Yet, it still works! Explain why.</h1>
+<h1>Here we use an <em>anonymous function</em> to loop through our
+model. What’s an easier way to call the <code>viewThumbnail</code>?</h1>
 <!-- -------------------------------------------------------------------------
-    ★ Subtitle
+    ☆ Subtitle
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-<h2>A partial function</h2>
+<h2>Anonymous function</h2>
 <!-- -------------------------------------------------------------------------
     ☆ Syntax (inline code)
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-<p>Already wrapped in a <code>&lt;p&gt;&lt;code&gt;</code> tag. A one
-liner: Some very short text for syntax.</p>
+<p><code>anonymous = \x -&gt; x * 2</code></p>
 <!-- -------------------------------------------------------------------------
     ★ Sample (code block or image)
 
@@ -52,17 +55,12 @@ liner: Some very short text for syntax.</p>
 -------------------------------------------------------------------------- -->
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">..</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- View --</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span> <span class="fu">model</span> <span class="op">=</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">..</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">..</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">,</span> <span class="fu">div</span> [ <span class="fu">id</span> <span class="st">&quot;thumbnails&quot;</span> ]</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        (<span class="dt">List</span><span class="op">.</span><span class="fu">map</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          (<span class="fu">viewThumbnail</span> <span class="fu">model</span><span class="op">.</span><span class="fu">selectedUrl</span>)  <span class="co">-- Apply the function</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">model</span><span class="op">.</span><span class="fu">photos</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">..</span></span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">div</span> [ <span class="fu">id</span> <span class="st">&quot;thumbnails&quot;</span> ]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        (<span class="dt">List</span><span class="op">.</span><span class="fu">map</span> <span class="co">-- viewThumbnail string record</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>          (\<span class="fu">photo</span> <span class="op">-&gt;</span> <span class="fu">viewThumbnail</span> <span class="fu">model</span><span class="op">.</span><span class="fu">selectedUrl</span> <span class="fu">photo</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">model</span><span class="op">.</span><span class="fu">photos</span>  <span class="co">-- List of `{ url = &quot;1.jpeg&quot; }`</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">..</span></span></code></pre></div>
 <!-- Back of card ======================================================== -->
 <!-- -------------------------------------------------------------------------
     ★ Key point (code block or image)
@@ -75,37 +73,37 @@ class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#c
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">viewThumbnail</span> <span class="fu">selectedUrl</span> <span class="fu">thumb</span> <span class="op">=</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">img</span> [ <span class="fu">src</span> (<span class="fu">urlPrefix</span> <span class="op">++</span> <span class="fu">thumb</span><span class="op">.</span><span class="fu">url</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="op">,</span> <span class="fu">classList</span> [ (<span class="st">&quot;selected&quot;</span><span class="op">,</span> <span class="fu">selectedUrl</span> <span class="op">==</span> <span class="fu">thumb</span><span class="op">.</span><span class="fu">url</span>) ]</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="op">..</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      ] []</span></code></pre></div>
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="dt">List</span><span class="op">.</span><span class="fu">map</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">viewThumbnail</span> <span class="fu">model</span><span class="op">.</span><span class="fu">selectedUrl</span>) <span class="co">-- Use a CURRIED function!</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">model</span><span class="op">.</span><span class="fu">photos</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <!-- -------------------------------------------------------------------------
     ★ Key point notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p>This is a big chunk of code!!! It’s quite simple though:</p>
 <ol type="1">
-<li>We <em>partially</em> apply <code>viewThumbnail</code> passing only
-one argument (a <code>"string"</code>)</li>
-<li><code>List.map</code> takes a function and a list
-<ul>
-<li><code>model.photos</code> gives us a list of records</li>
-</ul></li>
-<li><code>List.map</code> cycles through the records</li>
+<li><code>viewThumbnail</code> gets partially applied (with one
+argument)</li>
+<li>This is also called a <strong>curried function</strong></li>
+<li><code>model.photos</code> contains a list of records</li>
+<li><code>List.map</code> will cycle through the model</li>
+<li>And pass <code>viewThumbnail</code> a record as it’s second
+argument</li>
 </ol>
 <!-- -------------------------------------------------------------------------
-    ★ Other notes
+    ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
 <p>View the <a href="https://ellie-app.com/q4j6ps87Cj5a1">full
-program</a> which consumes the function. Here’s some <a
+program</a> which consumes the function. <a
+href="https://elmprogramming.com/list.html#mapping-a-list">Here’s what
+<code>List.map</code> does</a>. Here’s some <a
 href="https://www.codingexercises.com/guides/quickstart-elm-part-7">other
-curried function examples</a> too.</p>
+curried function examples</a>.</p>
 <!-- -------------------------------------------------------------------------
-    ★ Markdown
+    ✎ Markdown
 
     ⤷ `raw text`
 
@@ -118,14 +116,14 @@ curried function examples</a> too.</p>
 -------------------------------------------------------------------------- -->
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode elm"><code class="sourceCode elm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">..</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- View --</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span> <span class="fu">model</span> <span class="op">=</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">..</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">..</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">,</span> <span class="fu">div</span> [ <span class="fu">id</span> <span class="st">&quot;thumbnails&quot;</span> ]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        (<span class="dt">List</span><span class="op">.</span><span class="fu">map</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>          (<span class="fu">viewThumbnail</span> <span class="fu">model</span><span class="op">.</span><span class="fu">selectedUrl</span>)  <span class="co">-- Apply the function</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">model</span><span class="op">.</span><span class="fu">photos</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">..</span></span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">div</span> [ <span class="fu">id</span> <span class="st">&quot;thumbnails&quot;</span> ]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        (<span class="dt">List</span><span class="op">.</span><span class="fu">map</span> <span class="co">-- viewThumbnail string record</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>          (\<span class="fu">photo</span> <span class="op">-&gt;</span> <span class="fu">viewThumbnail</span> <span class="fu">model</span><span class="op">.</span><span class="fu">selectedUrl</span> <span class="fu">photo</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">model</span><span class="op">.</span><span class="fu">photos</span>  <span class="co">-- List of `{ url = &quot;1.jpeg&quot; }`</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="op">..</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="dt">List</span><span class="op">.</span><span class="fu">map</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">viewThumbnail</span> <span class="fu">model</span><span class="op">.</span><span class="fu">selectedUrl</span>) <span class="co">-- Use a CURRIED function!</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">model</span><span class="op">.</span><span class="fu">photos</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
