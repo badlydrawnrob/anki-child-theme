@@ -32,7 +32,7 @@ In this example, `viewThumbnail` only takes one argument; `model.selectedUrl`. Y
 
 
 <!-- -------------------------------------------------------------------------
-    ★ Subtitle
+    ☆ Subtitle
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
@@ -153,7 +153,7 @@ This is a big chunk of code!!! It's quite simple though:
 
 
 <!-- -------------------------------------------------------------------------
-    ★ Other notes
+    ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
@@ -163,7 +163,7 @@ View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the 
 
 
 <!-- -------------------------------------------------------------------------
-    ★ Markdown
+    ✎ Markdown
 
     ⤷ `raw text`
 

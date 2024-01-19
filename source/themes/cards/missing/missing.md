@@ -30,7 +30,7 @@ What kind of function do we call this? What will it output?
 
 
 <!-- -------------------------------------------------------------------------
-    ★ Subtitle
+    ☆ Subtitle
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
@@ -107,7 +107,7 @@ Our partially applied function is given the first number, not the second. We can
 
 
 <!-- -------------------------------------------------------------------------
-    ★ Other notes
+    ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
@@ -117,7 +117,7 @@ But _why_ is this useful, I hear you ask? [Here's some examples](https://www.cod
 
 
 <!-- -------------------------------------------------------------------------
-    ★ Markdown
+    ✎ Markdown
 
     ⤷ `raw text`
 

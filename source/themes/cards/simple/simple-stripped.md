@@ -31,15 +31,15 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# Here `viewThumbnail` takes one argument; `model.selectedUrl`. Yet it should expect two. Why does this code still work?
+# Here we use an _anonymous function_ to loop through our model. What's an easier way to call the `viewThumbnail`?
 
 
 <!-- -------------------------------------------------------------------------
-    ★ Subtitle
+    ☆ Subtitle
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## ..
+## Anonymous function
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-Already wrapped in a `<p><code>` tag. A one liner: Some very short text for syntax.
+`anonymous = \x -> x * 2`
 
 
 <!-- -------------------------------------------------------------------------
@@ -62,26 +62,12 @@ Already wrapped in a `<p><code>` tag. A one liner: Some very short text for synt
 -------------------------------------------------------------------------- -->
 ```elm
 ..
-
--- View --
-view model =
-  ..
-    ..
-    , div [ id "thumbnails" ]
-        (List.map  -- Loop through list of url
-          (viewThumbnail model.selectedUrl)  -- APPLY FUNCTION
-          model.photos  -- list of `{ url = "1.jpeg" }`
+div [ id "thumbnails" ]
+        (List.map -- viewThumbnail string record
+          (\photo -> viewThumbnail model.selectedUrl photo)
+          model.photos  -- List of `{ url = "1.jpeg" }`
         )
-    ..
-
--- Helper functions --
 ..
-
-viewThumbnail selectedUrl thumb =
-  img [ src (urlPrefix ++ thumb.url)  -- urlPrefix = "http://link.com"
-      , classList [ ("selected", selectedUrl == thumb.url) ]
-      ..
-      ] []
 ```
 
 
@@ -99,11 +85,10 @@ viewThumbnail selectedUrl thumb =
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 ```elm
-viewThumbnail "1.jpeg"
-```
-```terminal
-<function>
-    : { a | url : String } -> Html { data : String, description : String }
+(List.map
+  (viewThumbnail model.selectedUrl) -- Use a CURRIED function!
+    model.photos
+)
 ```
 
 
@@ -112,15 +97,15 @@ viewThumbnail "1.jpeg"
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-It's quite simple:
-
 1. `viewThumbnail` gets partially applied (with one argument)
 2. This is also called a **curried function**
-3. `List.map` will pass `viewThumbnail` it's second argument
+3. `model.photos` contains a list of records
+4. `List.map` will cycle through the model
+5. And pass `viewThumbnail` a record as it's second argument
 
 
 <!-- -------------------------------------------------------------------------
-    ★ Other notes
+    ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
@@ -128,7 +113,7 @@ View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the 
 
 
 <!-- -------------------------------------------------------------------------
-    ★ Markdown
+    ✎ Markdown
 
     ⤷ `raw text`
 
@@ -141,15 +126,16 @@ View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the 
 -------------------------------------------------------------------------- -->
 ```elm
 ..
-
--- View --
-view model =
-  ..
-    ..
-    , div [ id "thumbnails" ]
-        (List.map
-          (viewThumbnail model.selectedUrl)  -- Apply the function
-          model.photos
+div [ id "thumbnails" ]
+        (List.map -- viewThumbnail string record
+          (\photo -> viewThumbnail model.selectedUrl photo)
+          model.photos  -- List of `{ url = "1.jpeg" }`
         )
-    ..
+..
+```
+```elm
+(List.map
+  (viewThumbnail model.selectedUrl) -- Use a CURRIED function!
+    model.photos
+)
 ```
