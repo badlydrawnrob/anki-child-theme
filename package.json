@@ -9,6 +9,7 @@
     "pandoc": "npm run readme && npm run pandoc-pre && npm run simple-data && npm run missing-data",
     "pandoc-stripped": "npm run simple-data-stripped && npm run missing-data-stripped",
     "pandoc-pre": "pandoc source/pandoc/pre.md -o ./build/data/pre.html",
+    "pandoc-pre-reverse": "pandoc source/pandoc/pre.html -o ./build/data/pre.md",
     "simple-data": "pandoc --from markdown --to html source/themes/cards/simple/simple.md -s -o ./build/data/simple-data.html",
     "simple-data-stripped": "pandoc source/themes/cards/simple/simple-stripped.md -o ./build/data/simple-data-stripped.html",
     "missing-data": "pandoc --from markdown --to html source/themes/cards/missing/missing.md -s -o ./build/data/missing-data.html",
