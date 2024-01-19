@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# In this example, `viewThumbnail` only takes one argument; `model.selectedUrl`. Yet, it still works! Explain why.
+# Here `viewThumbnail` takes one argument; `model.selectedUrl`. Yet it should expect two. Why does this code still work?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## A partial function
+## ..
 
 
 <!-- -------------------------------------------------------------------------
@@ -68,11 +68,20 @@ view model =
   ..
     ..
     , div [ id "thumbnails" ]
-        (List.map
-          (viewThumbnail model.selectedUrl)  -- Apply the function
-          model.photos
+        (List.map  -- Loop through list of url
+          (viewThumbnail model.selectedUrl)  -- APPLY FUNCTION
+          model.photos  -- list of `{ url = "1.jpeg" }`
         )
     ..
+
+-- Helper functions --
+..
+
+viewThumbnail selectedUrl thumb =
+  img [ src (urlPrefix ++ thumb.url)  -- urlPrefix = "http://link.com"
+      , classList [ ("selected", selectedUrl == thumb.url) ]
+      ..
+      ] []
 ```
 
 
@@ -90,11 +99,11 @@ view model =
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 ```elm
-viewThumbnail selectedUrl thumb =
-  img [ src (urlPrefix ++ thumb.url)
-      , classList [ ("selected", selectedUrl == thumb.url) ]
-      ..
-      ] []
+viewThumbnail "1.jpeg"
+```
+```terminal
+<function>
+    : { a | url : String } -> Html { data : String, description : String }
 ```
 
 
@@ -103,12 +112,11 @@ viewThumbnail selectedUrl thumb =
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-This is a big chunk of code!!! It's quite simple though:
+It's quite simple:
 
-1. We _partially_ apply `viewThumbnail` passing only one argument (a `"string"`)
-2. `List.map` takes a function and a list
-    - `model.photos` gives us a list of records
-3. `List.map` cycles through the records
+1. `viewThumbnail` gets partially applied (with one argument)
+2. This is also called a **curried function**
+3. `List.map` will pass `viewThumbnail` it's second argument
 
 
 <!-- -------------------------------------------------------------------------
@@ -116,7 +124,7 @@ This is a big chunk of code!!! It's quite simple though:
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the function. Here's some [other curried function examples](https://www.codingexercises.com/guides/quickstart-elm-part-7) too.
+View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the function. [Here's what `List.map` does](https://elmprogramming.com/list.html#mapping-a-list). Here's some [other curried function examples](https://www.codingexercises.com/guides/quickstart-elm-part-7).
 
 
 <!-- -------------------------------------------------------------------------
