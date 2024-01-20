@@ -52,7 +52,7 @@ What do we call this?
 <!-- -------------------------------------------------------------------------
     ★ Key point (code block or image)
 
-    ⤷ `pre block | image`
+    ⤷ `code block | image`
 
       | Requires `markdown` fenced code block;
       | Requires `{{c1:cloze}}` tag(s))
@@ -129,7 +129,7 @@ But _why_ is this useful, I hear you ask? [Here's some examples](https://www.cod
 
         Warning: remove all `{{c1:cloze}}` cloze deletion tags!
 
-      If you save your card with cloze deletion tags in the `★ Markdown`
+      If you save your card with cloze deletion tags in the `✎ Markdown`
       field, Anki will throw an error, and you might not be able to save
       your card.
 -------------------------------------------------------------------------- -->

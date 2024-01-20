@@ -54,7 +54,7 @@ A partial function
 <!-- -------------------------------------------------------------------------
     ★ Sample (code block or image)
 
-    ⤷ `pre block | image`
+    ⤷ `code block | image`
 
       | Requires `markdown` fenced code block;
 
@@ -101,7 +101,7 @@ viewThumbnail selectedUrl thumb =
 <!-- -------------------------------------------------------------------------
     ★ Key point (code block or image)
 
-    ⤷ `pre block | image`
+    ⤷ `code block | image`
 
       | Requires `markdown` fenced code block;
 
