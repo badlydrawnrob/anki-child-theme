@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# Here's an example of a simple `record`. How do we change the name?
+# What's so special about a higher order function?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Record
+## Higher order functions
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`{ name = "string" }`
+`List.map`
 
 
 <!-- -------------------------------------------------------------------------
@@ -61,7 +61,10 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 ```elm
-steve = { name = "Wozniak" }  -- Change me!
+guardians = [ "Star-lord", "Groot", "Gamora", "Drax", "Rocket" ]
+-- Cycle through the list
+List.map String.length guardians
+-- [9,5,6] : List Int
 ```
 
 
@@ -79,11 +82,12 @@ steve = { name = "Wozniak" }  -- Change me!
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 ```elm
--- Change me!
-{ steve | name = "Jobs" }
--- { name = "Jobs" } : { name : String }
-steve
--- { name = "Wozniak" } : { name : String }
+-- Store our Guardian's lengths in a variable
+lengths = List.map String.length guardians
+-- Now let's get the lengths that are less than 6!
+-- Remember, everything in `()` is an ANONYMOUS function
+List.filter (\x -> x < 6) lengths
+-- [5] : List Int
 ```
 
 
@@ -92,7 +96,11 @@ steve
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-The `|` pipe operator is how we "change" the name of our record. Records are **immutable**, so it doesn't really _change_ it, but returns a **new** record!
+Higher order functions _take a function_ as one of their arguments.
+
+- `List.map`cycles through the list
+- For every cycle it calls `function`
+- When it's done, `List.map` outputs another list!
 
 
 <!-- -------------------------------------------------------------------------
@@ -100,7 +108,7 @@ The `|` pipe operator is how we "change" the name of our record. Records are **i
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the function. [Here's what `List.map` does](https://elmprogramming.com/list.html#mapping-a-list). Here's some [other curried function examples](https://www.codingexercises.com/guides/quickstart-elm-part-7).
+`List.map` and `List.filter` are both examples of **Higher Order Functions**. These are functions **that take other functions as arguments**.Some more examples in [Elm lang](https://learnyouanelm.github.io/pages/06-higher-order-functions.html), and [Racket lang](https://beautifulracket.com/appendix/glossary.html#higher-order-function)
 
 
 <!-- -------------------------------------------------------------------------
@@ -116,17 +124,16 @@ View the [full program](https://ellie-app.com/q4j6ps87Cj5a1) which consumes the 
         @ https://github.com/badlydrawnrob/anki/issues/116
 -------------------------------------------------------------------------- -->
 ```elm
-..
-div [ id "thumbnails" ]
-        (List.map -- viewThumbnail string record
-          (\photo -> viewThumbnail model.selectedUrl photo)
-          model.photos  -- List of `{ url = "1.jpeg" }`
-        )
-..
+guardians = [ "Star-lord", "Groot", "Gamora", "Drax", "Rocket" ]
+-- Cycle through the list
+List.map String.length guardians
+-- [9,5,6] : List Int
 ```
 ```elm
-(List.map
-  (viewThumbnail model.selectedUrl) -- Use a CURRIED function!
-    model.photos
-)
+-- Store our Guardian's lengths in a variable
+lengths = List.map String.length guardians
+-- Now let's get the lengths that are less than 6!
+-- Remember, everything in `()` is an ANONYMOUS function
+List.filter (\x -> x < 6) lengths
+-- [5] : List Int
 ```
