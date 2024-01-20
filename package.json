@@ -1,6 +1,6 @@
 {
   "name": "anki-child-theme",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Extending the Anki Themes repo",
   "main": "index.js",
   "scripts": {
@@ -10,9 +10,9 @@
     "pandoc-stripped": "npm run simple-data-stripped && npm run missing-data-stripped",
     "pandoc-code": "pandoc source/pandoc/code.md -o ./build/data/code.html",
     "pandoc-code-reverse": "pandoc source/pandoc/code.html -o ./build/data/code.md",
-    "simple-data": "pandoc --from markdown --to html --template=./source/pandoc/template.html source/themes/cards/simple/simple.md -s -o ./build/data/simple-data.html",
+    "simple-data": "pandoc --from markdown --to html --template=./node_modules/anki/source/pandoc/template.html source/themes/cards/simple/simple.md -s -o ./build/data/simple-data.html",
     "simple-data-stripped": "pandoc --from markdown-auto_identifiers source/themes/cards/simple/simple-stripped.md -o ./build/data/simple-data-stripped.html",
-    "missing-data": "pandoc --from markdown --to html --template=./source/pandoc/template.html source/themes/cards/missing/missing.md -s -o ./build/data/missing-data.html",
+    "missing-data": "pandoc --from markdown --to html --template=./node_modules/anki/source/pandoc/template.html source/themes/cards/missing/missing.md -s -o ./build/data/missing-data.html",
     "missing-data-stripped": "pandoc --from markdown-auto_identifiers source/themes/cards/missing/missing-stripped.md -o ./build/data/missing-data-stripped.html",
     "readme": "pandoc --from markdown --to html README.md -s -o ./build/README.html",
     "build": "npm run css && npm run pandoc"
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/badlydrawnrob/anki#readme",
   "devDependencies": {
-    "anki": "github:badlydrawnrob/anki#95b3053",
+    "anki": "github:badlydrawnrob/anki#7eea188",
     "less": "^4.2.0",
     "print-first-css": "github:badlydrawnrob/print-first-css#dafa5ae"
   }

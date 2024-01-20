@@ -15,7 +15,7 @@ docs:
 notes:
   View compiled file in your text editor or a Chrome-type browser.
   The `## H2` titles represent Anki text fields, with the contents below.
-css: ../style/main.css
+css: ../../node_modules/anki/build/style/main.css
 ---
 
 
