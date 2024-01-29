@@ -27,76 +27,81 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-<h1>What kind of function do we call this? What will it output?</h1>
+<h1>What do we call this?</h1>
 <!-- -------------------------------------------------------------------------
     ☆ Subtitle
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-<h2>What do we call this?</h2>
+<h2>Types</h2>
 <!-- -------------------------------------------------------------------------
     ☆ Syntax (inline code)
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-<p><code>(aDifferentAdder num)</code></p>
+<p>false</p>
 <!-- -------------------------------------------------------------------------
     ★ Key point (code block or image)
 
     ⤷ `pre block | image`
 
       | Requires `markdown` fenced code block;
-      | Requires `{{c1:cloze}}` tag(s))
+      | Requires `{{c1::cloze}}` tag(s))
 
       A markdown fenced code block that will compile to our highlighted
-      code with Pandoc. Make sure to add at least one cloze deletion:
+      code with Pandoc. Once you've compiled your code block, be sure to
+      add at least one cloze deletion in your Anki card:
 
-        `{{c1:the answer:HINT TEXT}}`
+        `{{c1::the answer::HINT TEXT}}`
 
       Here's an example cloze card:
 
         @ https://codepen.io/testuser-247585903/pen/BabRjvb
 
-      You can add cloze deletion tags to the fenced code block and
-      they should work fine in Anki. You can also:
+      Here's how to do it in the Anki editor:
 
       1. `Toggle HTML Editor ⌘⇧X` (`‹›`) to enable rich text preview
       2. Press the `[...]` or `[...]+` button to add a cloze deletion
 -------------------------------------------------------------------------- -->
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- This is called a {{c1::curried}} function</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aDifferentAdder</span> <span class="fu">num</span> <span class="op">=</span> ((<span class="op">*</span>) <span class="fu">num</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- &lt;function&gt; : number -&gt; number -&gt; number</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">aDifferentAdder</span> <span class="dv">2</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- What will be returned?</span></span></code></pre></div>
-<pre class="terminal"><code>{{c1::&lt;function&gt; : number -&gt; number}}</code></pre>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Here we&#39;re applying the {{c1::curried}} function</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">timesByTwo</span> <span class="fu">num</span> <span class="op">=</span> <span class="fu">aDifferentAdder</span> <span class="dv">2</span> <span class="fu">num</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- &lt;function&gt; : number -&gt; number</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">timesByTwo</span> <span class="dv">5</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- 10 : number</span></span></code></pre></div>
+<pre class="terminal"><code>type {{c1::alias}} User =
+  { name : String
+  , age : Int
+  }
+
+isOldEnoughToVote : User -&gt; Bool
+isOldEnoughToVote user =
+  user.age &gt;= 18
+
+isOldEnoughToVote { name = &quot;Heather&quot;, age = 32 }</code></pre>
+<pre class="terminal"><code>True</code></pre>
 <!-- -------------------------------------------------------------------------
     ★ Key point notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p>This is called a <strong>curried function</strong>, or a
-<strong>partially applied function</strong>. You could also read the
-procedure output like this
-<code>&lt;function&gt; : (number -&gt; number) -&gt; number</code>; the
-first two numbers return the output number.</p>
-<p>Our partially applied function is given the first number, not the
-second. We can apply this function <em>later</em> by giving it the
-second value!</p>
+<ol type="1">
+<li>Our compiler will complain if <code>isOldEnoughToVote</code>
+receives anything other than a <code>User</code>.</li>
+<li>Our <code>{ record }</code> must be formatted the same as our
+<code>type alias</code>!</li>
+<li>Our <code>User</code> type alias means we can avoid repetition.</li>
+<li>Whenever we need to add a type annotation, we can replace a record
+with <code>User</code>.</li>
+</ol>
+<p>A <code>type alias</code> declaration assigns a name to a type, much
+as a constant assigns a name to a value. It also means we need fewer
+<code>-- comments</code> to explain what our code does. With well named
+Types and functions, it’s easier to reason about.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p>But <em>why</em> is this useful, I hear you ask? <a
-href="https://www.codingexercises.com/guides/quickstart-elm-part-7">Here’s
-some examples</a>.</p>
+<p>More examples of <code>type alias</code> <a
+href="https://guide.elm-lang.org/types/type_aliases">can be found
+here</a>. See also <strong><a
+href="https://guide.elm-lang.org/types/type_aliases#record-constructors">Record
+constructors</a></strong>.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Markdown
 
@@ -114,16 +119,15 @@ some examples</a>.</p>
       field, Anki will throw an error, and you might not be able to save
       your card.
 -------------------------------------------------------------------------- -->
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- This is called a {{c1::curried}} function</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aDifferentAdder</span> <span class="fu">num</span> <span class="op">=</span> ((<span class="op">*</span>) <span class="fu">num</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- &lt;function&gt; : number -&gt; number -&gt; number</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">aDifferentAdder</span> <span class="dv">2</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- What will be returned?</span></span></code></pre></div>
-<pre class="terminal"><code>{{c1::&lt;function&gt; : number -&gt; number}}</code></pre>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Here we&#39;re applying the {{c1::curried}} function</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">timesByTwo</span> <span class="fu">num</span> <span class="op">=</span> <span class="fu">aDifferentAdder</span> <span class="dv">2</span> <span class="fu">num</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- &lt;function&gt; : number -&gt; number</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">timesByTwo</span> <span class="dv">5</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- 10 : number</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="kw">alias</span> <span class="dt">User</span> <span class="op">=</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  { <span class="fu">name</span> : <span class="dt">String</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">,</span> <span class="fu">age</span> : <span class="dt">Int</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">isOldEnoughToVote</span> : <span class="dt">User</span> <span class="op">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">isOldEnoughToVote</span> <span class="fu">user</span> <span class="op">=</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">user</span><span class="op">.</span><span class="fu">age</span> <span class="op">&gt;=</span> <span class="dv">18</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">isOldEnoughToVote</span> { <span class="fu">name</span> <span class="op">=</span> <span class="st">&quot;Heather&quot;</span><span class="op">,</span> <span class="fu">age</span> <span class="op">=</span> <span class="dv">32</span> }</span></code></pre></div>
+<pre class="terminal"><code>True</code></pre>

@@ -37,7 +37,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## false
+## Types
 
 
 <!-- -------------------------------------------------------------------------
@@ -45,7 +45,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`(aDifferentAdder num)`
+false
 
 
 <!-- -------------------------------------------------------------------------
@@ -69,13 +69,23 @@
       they should work fine in Anki. You can also:
 
       1. `Toggle HTML Editor ⌘⇧X` (`‹›`) to enable rich text preview
-      2. Press the `[...]` or `[...]+` button to add a cloze deletion
+      2. Highlight the text that you'd like to convert to a cloze.
+      3. Press the `[...]` or `[...]+` button to add the cloze deletion
 -------------------------------------------------------------------------- -->
-```elm
+```terminal
 type {{c1::alias}} User =
   { name : String
   , age : Int
   }
+
+isOldEnoughToVote : User -> Bool
+isOldEnoughToVote user =
+  user.age >= 18
+
+isOldEnoughToVote { name = "Heather", age = 32 }
+```
+```terminal
+True
 ```
 
 
@@ -84,7 +94,12 @@ type {{c1::alias}} User =
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-A `type alias` declaration assigns a name to a type, much as a constant assigns a name to a value.
+1. Our compiler will complain if `isOldEnoughToVote` receives anything other than a `User`.
+2. Our `{ record }` must be formatted the same as our `type alias`!
+3. Our `User` type alias means we can avoid repetition.
+4. Whenever we need to add a type annotation, we can replace a record with `User`.
+
+A `type alias` declaration assigns a name to a type, much as a constant assigns a name to a value. It also means we need fewer `-- comments` to explain what our code does. With well named Types and functions, it's easier to reason about.
 
 
 <!-- -------------------------------------------------------------------------
@@ -92,7 +107,7 @@ A `type alias` declaration assigns a name to a type, much as a constant assigns 
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-But _why_ is this useful, I hear you ask? [Here's some examples](https://www.codingexercises.com/guides/quickstart-elm-part-7).
+More examples of `type alias` [can be found here](https://guide.elm-lang.org/types/type_aliases). See also **[Record constructors](https://guide.elm-lang.org/types/type_aliases#record-constructors)**.
 
 
 <!-- -------------------------------------------------------------------------
@@ -113,19 +128,17 @@ But _why_ is this useful, I hear you ask? [Here's some examples](https://www.cod
       your card.
 -------------------------------------------------------------------------- -->
 ```elm
--- This is called a {{c1::curried}} function
-aDifferentAdder num = ((*) num)
--- <function> : number -> number -> number
-aDifferentAdder 2
--- What will be returned?
+type alias User =
+  { name : String
+  , age : Int
+  }
+
+isOldEnoughToVote : User -> Bool
+isOldEnoughToVote user =
+  user.age >= 18
+
+isOldEnoughToVote { name = "Heather", age = 32 }
 ```
 ```terminal
-{{c1::<function> : number -> number}}
-```
-```elm
--- Here we're applying the {{c1::curried}} function
-timesByTwo num = aDifferentAdder 2 num
--- <function> : number -> number
-timesByTwo 5
--- 10 : number
+True
 ```
