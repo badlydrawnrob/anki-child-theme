@@ -6,7 +6,7 @@ An extension of [Anki programming theme](https://github.com/badlydrawnrob/anki)
 
 ## Important files
 
-> Make sure you've run `npm run build` first!
+> Make sure you've run `npm run build` first![^1]
 
 - **Demo:**
     - [`simple.html`](../node_modules/anki/build/demo/simple.html)
@@ -29,9 +29,12 @@ An extension of [Anki programming theme](https://github.com/badlydrawnrob/anki)
 
 1. For the default compiler
     - `npm run pandoc`
-2. For [the stripped down](https://github.com/badlydrawnrob/anki-child-theme/issues/9) compiler[^1]
+2. For [the stripped down](https://github.com/badlydrawnrob/anki-child-theme/issues/9) compiler[^2]
     - Add a little more code to `package.json`
     - `npm run pandoc-stripped`
 
 
-[^1]: The stripped down version compiles a lot less code, so is easier to read. This comes with the trade off that it doesn't look as pretty in the browser (for instance, the code highlighting `.classes` will be added, but you won't be able to preview it in the browser).
+
+[^1]: Anki and Print-first-css `devDependancies` might need to be udpated manually by running `npm install anki`, for example. `npm update anki` doesn't update to the latest version as expected.
+
+[^2]: The stripped down version compiles a lot less code, so is easier to read. This comes with the trade off that it doesn't look as pretty in the browser (for instance, the code highlighting `.classes` will be added, but you won't be able to preview it in the browser).

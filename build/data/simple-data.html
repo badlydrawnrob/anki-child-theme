@@ -129,37 +129,37 @@
       <h2 id="sample-code-block-or-image">★ Sample (code block or
       image)</h2>
       <div class="sourceCode" id="cb1"><pre
-      class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">..</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- View --</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span> <span class="fu">model</span> <span class="op">=</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">..</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">..</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">,</span> <span class="fu">div</span> [ <span class="fu">id</span> <span class="st">&quot;thumbnails&quot;</span> ]</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        (<span class="dt">List</span><span class="op">.</span><span class="fu">map</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          (<span class="fu">viewThumbnail</span> <span class="fu">model</span><span class="op">.</span><span class="fu">selectedUrl</span>)  <span class="co">-- Apply the function</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">model</span><span class="op">.</span><span class="fu">photos</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">..</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">-- Helper functions --</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">urlPrefix</span> <span class="op">=</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;http://elm-in-action.com/&quot;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">viewThumbnail</span> <span class="fu">selectedUrl</span> <span class="fu">thumb</span> <span class="op">=</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">img</span> [ <span class="fu">src</span> (<span class="fu">urlPrefix</span> <span class="op">++</span> <span class="fu">thumb</span><span class="op">.</span><span class="fu">url</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="op">,</span> <span class="fu">classList</span> [ (<span class="st">&quot;selected&quot;</span><span class="op">,</span> <span class="fu">selectedUrl</span> <span class="op">==</span> <span class="fu">thumb</span><span class="op">.</span><span class="fu">url</span>) ]</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="op">..</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      ] []</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">-- Model --</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>{ <span class="fu">photos</span> <span class="op">=</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    [ { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;1.jpeg&quot;</span> }  <span class="co">-- Our list of urls</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">,</span> { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;2.jpeg&quot;</span> }</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">,</span> { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;3.jpeg&quot;</span> }</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="op">,</span> <span class="fu">selectedUrl</span> <span class="op">=</span> <span class="st">&quot;1.jpeg&quot;</span>  <span class="co">-- Has the url been selected?</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+      class="sourceCode numberSource elm numberLines"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">..</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">-- View --</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">view</span> <span class="fu">model</span> <span class="op">=</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="op">..</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="op">..</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="op">,</span> <span class="fu">div</span> [ <span class="fu">id</span> <span class="st">&quot;thumbnails&quot;</span> ]</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        (<span class="dt">List</span><span class="op">.</span><span class="fu">map</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>          (<span class="fu">viewThumbnail</span> <span class="fu">model</span><span class="op">.</span><span class="fu">selectedUrl</span>)  <span class="co">-- Apply the function</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>          <span class="fu">model</span><span class="op">.</span><span class="fu">photos</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>        )</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="op">..</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">-- Helper functions --</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="fu">urlPrefix</span> <span class="op">=</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>  <span class="st">&quot;http://elm-in-action.com/&quot;</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="fu">viewThumbnail</span> <span class="fu">selectedUrl</span> <span class="fu">thumb</span> <span class="op">=</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>  <span class="fu">img</span> [ <span class="fu">src</span> (<span class="fu">urlPrefix</span> <span class="op">++</span> <span class="fu">thumb</span><span class="op">.</span><span class="fu">url</span>)</span>
+<span id="cb1-20"><a href="#cb1-20"></a>      <span class="op">,</span> <span class="fu">classList</span> [ (<span class="st">&quot;selected&quot;</span><span class="op">,</span> <span class="fu">selectedUrl</span> <span class="op">==</span> <span class="fu">thumb</span><span class="op">.</span><span class="fu">url</span>) ]</span>
+<span id="cb1-21"><a href="#cb1-21"></a>      <span class="op">..</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>      ] []</span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co">-- Model --</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>{ <span class="fu">photos</span> <span class="op">=</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>    [ { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;1.jpeg&quot;</span> }  <span class="co">-- Our list of urls</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>    <span class="op">,</span> { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;2.jpeg&quot;</span> }</span>
+<span id="cb1-28"><a href="#cb1-28"></a>    <span class="op">,</span> { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;3.jpeg&quot;</span> }</span>
+<span id="cb1-29"><a href="#cb1-29"></a>    ]</span>
+<span id="cb1-30"><a href="#cb1-30"></a>  <span class="op">,</span> <span class="fu">selectedUrl</span> <span class="op">=</span> <span class="st">&quot;1.jpeg&quot;</span>  <span class="co">-- Has the url been selected?</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>  }</span></code></pre></div>
       <!-- -------------------------------------------------------------------------
           ★ Key point (code block or image)
 

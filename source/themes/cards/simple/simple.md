@@ -63,7 +63,7 @@ A partial function
 -------------------------------------------------------------------------- -->
 ## ★ Sample (code block or image)
 
-```elm
+```{.elm .numberLines}
 ..
 
 -- View --

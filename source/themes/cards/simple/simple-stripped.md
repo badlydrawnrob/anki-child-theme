@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# What's so special about a higher order function?
+# What do we call this?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Higher order functions
+## Type annotations
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`List.map`
+`String.slice`
 
 
 <!-- -------------------------------------------------------------------------
@@ -61,10 +61,12 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 ```elm
-guardians = [ "Star-lord", "Groot", "Gamora", "Drax", "Rocket" ]
--- Cycle through the list
-List.map String.length guardians
--- [9,5,6] : List Int
+-- What's the type annotation
+-- for each step?
+slice 0 5 "Harry Styles"  -- 1. Returns a String
+slice 0 5  -- 2. Returns a function
+slice 0  -- 3. Returns a function
+slice  -- 4. Returns a funtion
 ```
 
 
@@ -81,13 +83,15 @@ List.map String.length guardians
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
+```terminal
+1. "Harry"
+2. <function> -> String -> String
+3. <function> -> Int -> (String -> String)
+4. <function> -> Int -> (Int -> (String -> String))
+```
 ```elm
--- Store our Guardian's lengths in a variable
-lengths = List.map String.length guardians
--- Now let's get the lengths that are less than 6!
--- Remember, everything in `()` is an ANONYMOUS function
-List.filter (\x -> x < 6) lengths
--- [5] : List Int
+slice : Int -> Int -> String -> String
+slice 0 5 "Harry Styles"
 ```
 
 
@@ -96,11 +100,7 @@ List.filter (\x -> x < 6) lengths
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-Higher order functions _take a function_ as one of their arguments.
-
-- `List.map`cycles through the list
-- For every cycle it calls `function`
-- When it's done, `List.map` outputs another list!
+Remember that most functions can be **curried**. Technically, every Elm function takes only one argument, and (if more than one argument) returns another function.
 
 
 <!-- -------------------------------------------------------------------------
@@ -108,7 +108,7 @@ Higher order functions _take a function_ as one of their arguments.
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-`List.map` and `List.filter` are both examples of **Higher Order Functions**. These are functions **that take other functions as arguments**.Some more examples in [Elm lang](https://learnyouanelm.github.io/pages/06-higher-order-functions.html), and [Racket lang](https://beautifulracket.com/appendix/glossary.html#higher-order-function)
+false
 
 
 <!-- -------------------------------------------------------------------------
@@ -123,17 +123,4 @@ Higher order functions _take a function_ as one of their arguments.
       Warning: may increase card file size
         @ https://github.com/badlydrawnrob/anki/issues/116
 -------------------------------------------------------------------------- -->
-```elm
-guardians = [ "Star-lord", "Groot", "Gamora", "Drax", "Rocket" ]
--- Cycle through the list
-List.map String.length guardians
--- [9,5,6] : List Int
-```
-```elm
--- Store our Guardian's lengths in a variable
-lengths = List.map String.length guardians
--- Now let's get the lengths that are less than 6!
--- Remember, everything in `()` is an ANONYMOUS function
-List.filter (\x -> x < 6) lengths
--- [5] : List Int
-```
+false

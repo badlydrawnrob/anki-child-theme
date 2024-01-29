@@ -29,7 +29,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# What kind of function do we call this? What will it output?
+# What do we call this?
 
 
 <!-- -------------------------------------------------------------------------
@@ -37,7 +37,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## What do we call this?
+## false
 
 
 <!-- -------------------------------------------------------------------------
@@ -54,12 +54,12 @@
     ⤷ `pre block | image`
 
       | Requires `markdown` fenced code block;
-      | Requires `{{c1:cloze}}` tag(s))
+      | Requires `{{c1::cloze}}` tag(s))
 
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. Make sure to add at least one cloze deletion:
 
-        `{{c1:the answer:HINT TEXT}}`
+        `{{c1::the answer::HINT TEXT}}`
 
       Here's an example cloze card:
 
@@ -72,21 +72,10 @@
       2. Press the `[...]` or `[...]+` button to add a cloze deletion
 -------------------------------------------------------------------------- -->
 ```elm
--- This is called a {{c1::curried}} function
-aDifferentAdder num = ((*) num)
--- <function> : number -> number -> number
-aDifferentAdder 2
--- What will be returned?
-```
-```terminal
-{{c1::<function> : number -> number}}
-```
-```elm
--- Here we're applying the {{c1::curried}} function
-timesByTwo num = aDifferentAdder 2 num
--- <function> : number -> number
-timesByTwo 5
--- 10 : number
+type {{c1::alias}} User =
+  { name : String
+  , age : Int
+  }
 ```
 
 
@@ -95,9 +84,7 @@ timesByTwo 5
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-This is called a **curried function**, or a **partially applied function**. You could also read the procedure output like this `<function> : (number -> number) -> number`; the first two numbers return the output number.
-
-Our partially applied function is given the first number, not the second. We can apply this function _later_ by giving it the second value!
+A `type alias` declaration assigns a name to a type, much as a constant assigns a name to a value.
 
 
 <!-- -------------------------------------------------------------------------
