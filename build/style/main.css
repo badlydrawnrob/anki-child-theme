@@ -1940,6 +1940,13 @@ code.sourceCode > span > a:first-child::before {
   --font-family-header: var(--dejavu), var(--system-ui);
   --font-family-mono: var(--dejavu-mono), var(--system-mono), var(--fallback-mono);
 }
+body {
+  color: var(--font-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  background: transparent;
+}
 @font-face {
   font-family: "DejaVu Sans";
   src: url("_DejaVuSans.ttf");
@@ -2149,6 +2156,9 @@ img {
 .simple-Header_Title::before {
   content: '★';
 }
+.simple-Header_Title code {
+  font-size: var(--font-size-p);
+}
 .simple-Header_Subtitle {
   margin: 0 0 var(--spacing-half);
   padding: var(--spacing-half);
@@ -2186,9 +2196,9 @@ img {
 }
 .simple-Notes {
   margin-bottom: var(--spacing);
+  padding: 0 var(--spacing-one);
   color: var(--color-card-llll);
   font-size: var(--font-size-m);
-  font-style: italic;
   line-height: var(--line-height-one);
 }
 .missing {
@@ -2235,6 +2245,9 @@ img {
 .missing-Header_Title::before {
   content: '★';
 }
+.missing-Header_Title code {
+  font-size: var(--font-size-p);
+}
 .missing-Header_Subtitle {
   margin: 0 0 var(--spacing-half);
   padding: var(--spacing-half);
@@ -2272,10 +2285,9 @@ img {
 }
 .missing-Notes {
   margin-bottom: var(--spacing);
-  padding: 0 var(--spacing);
+  padding: 0 var(--spacing-one);
   color: var(--color-card-llll);
   font-size: var(--font-size-m);
-  font-style: italic;
   line-height: var(--line-height-one);
   text-align: left;
 }

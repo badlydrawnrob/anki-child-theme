@@ -179,7 +179,8 @@
 programming theme</a></p>
 <h2 id="important-files">Important files</h2>
 <blockquote>
-<p>Make sure you’ve run <code>npm run build</code> first!</p>
+<p>Make sure you’ve run <code>npm run build</code> first!<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
 <ul>
 <li><strong>Demo:</strong>
@@ -227,8 +228,8 @@ app)
 </ul></li>
 <li>For <a
 href="https://github.com/badlydrawnrob/anki-child-theme/issues/9">the
-stripped down</a> compiler<a href="#fn1" class="footnote-ref"
-id="fnref1" role="doc-noteref"><sup>1</sup></a>
+stripped down</a> compiler<a href="#fn2" class="footnote-ref"
+id="fnref2" role="doc-noteref"><sup>2</sup></a>
 <ul>
 <li>Add a little more code to <code>package.json</code></li>
 <li><code>npm run pandoc-stripped</code></li>
@@ -238,11 +239,16 @@ id="fnref1" role="doc-noteref"><sup>1</sup></a>
 role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>The stripped down version compiles a lot less code, so
+<li id="fn1"><p>Anki and Print-first-css <code>devDependancies</code>
+might need to be udpated manually by running
+<code>npm install anki</code>, for example. <code>npm update anki</code>
+doesn’t update to the latest version as expected.<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The stripped down version compiles a lot less code, so
 is easier to read. This comes with the trade off that it doesn’t look as
 pretty in the browser (for instance, the code highlighting
 <code>.classes</code> will be added, but you won’t be able to preview it
-in the browser).<a href="#fnref1" class="footnote-back"
+in the browser).<a href="#fnref2" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside>
