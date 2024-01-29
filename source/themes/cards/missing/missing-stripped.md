@@ -29,7 +29,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# What do we call this?
+# How would we write the type annotation for `photoArray`?
 
 
 <!-- -------------------------------------------------------------------------
@@ -45,7 +45,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-false
+`Array.fromList`
 
 
 <!-- -------------------------------------------------------------------------
@@ -72,20 +72,29 @@ false
       2. Highlight the text that you'd like to convert to a cloze.
       3. Press the `[...]` or `[...]+` button to add the cloze deletion
 -------------------------------------------------------------------------- -->
-```terminal
-type {{c1::alias}} User =
-  { name : String
-  , age : Int
+```elm
+import Array exposing (Array)
+
+type alias Photo =
+  { url : String }
+
+initialModel : Model
+initialModel =
+  { photos =
+    [ { url = "1.jpeg" }
+    , { url = "2.jpeg" }
+    ]
+  ...
   }
 
-isOldEnoughToVote : User -> Bool
-isOldEnoughToVote user =
-  user.age >= 18
-
-isOldEnoughToVote { name = "Heather", age = 32 }
+photoArray : Array Photo
+photoArray =
+  Array.fromList initialModel.photos
 ```
 ```terminal
-True
+> photoArray
+Array.fromList [{ url = "1.jpeg" },{ url = "2.jpeg" }]
+    : Array { url : String }
 ```
 
 
@@ -94,12 +103,7 @@ True
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-1. Our compiler will complain if `isOldEnoughToVote` receives anything other than a `User`.
-2. Our `{ record }` must be formatted the same as our `type alias`!
-3. Our `User` type alias means we can avoid repetition.
-4. Whenever we need to add a type annotation, we can replace a record with `User`.
-
-A `type alias` declaration assigns a name to a type, much as a constant assigns a name to a value. It also means we need fewer `-- comments` to explain what our code does. With well named Types and functions, it's easier to reason about.
+Just like a list (`[]`), `Array` acts as a container for stuff. In this case, our "stuff" is a `Photo` type alias, which can also be read as a `List { url : String }`. We've created a shorthand for `Photo` so can write it as an `Array` (of) `Photo`.
 
 
 <!-- -------------------------------------------------------------------------
@@ -107,7 +111,7 @@ A `type alias` declaration assigns a name to a type, much as a constant assigns 
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-More examples of `type alias` [can be found here](https://guide.elm-lang.org/types/type_aliases). See also **[Record constructors](https://guide.elm-lang.org/types/type_aliases#record-constructors)**.
+`Array` is different from a list. You can't take the index of a list, like `list[0]` (you'd use [`head`](https://package.elm-lang.org/packages/elm/core/latest/List#head) instead). `Array` is also better [at dealing with empty lists](https://package.elm-lang.org/packages/elm/core/latest/Array#get)!
 
 
 <!-- -------------------------------------------------------------------------
@@ -127,18 +131,4 @@ More examples of `type alias` [can be found here](https://guide.elm-lang.org/typ
       field, Anki will throw an error, and you might not be able to save
       your card.
 -------------------------------------------------------------------------- -->
-```elm
-type alias User =
-  { name : String
-  , age : Int
-  }
-
-isOldEnoughToVote : User -> Bool
-isOldEnoughToVote user =
-  user.age >= 18
-
-isOldEnoughToVote { name = "Heather", age = 32 }
-```
-```terminal
-True
-```
+false

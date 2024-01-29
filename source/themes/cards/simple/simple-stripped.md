@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# What do we call this?
+# What do we call `a`, as in `List a`?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Type annotations
+## Types
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`String.slice`
+`List a`
 
 
 <!-- -------------------------------------------------------------------------
@@ -61,12 +61,11 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 ```elm
--- What's the type annotation
--- for each step?
-slice 0 5 "Harry Styles"  -- 1. Returns a String
-slice 0 5  -- 2. Returns a function
-slice 0  -- 3. Returns a function
-slice  -- 4. Returns a funtion
+[]  -- : List a
+
+["one", "two", "three"]  -- : List String
+[1.5, 2.0, 3.1] -- : List Float
+[("one",2),("two",3)] -- : List ( String, number )
 ```
 
 
@@ -83,15 +82,11 @@ slice  -- 4. Returns a funtion
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
-```terminal
-1. "Harry"
-2. <function> -> String -> String
-3. <function> -> Int -> (String -> String)
-4. <function> -> Int -> (Int -> (String -> String))
-```
 ```elm
-slice : Int -> Int -> String -> String
-slice 0 5 "Harry Styles"
+fromList : List elementType -> Array elementType
+
+fromList : List Int -> Array Int
+fromList [1, 2, 3, 4]
 ```
 
 
@@ -100,7 +95,9 @@ slice 0 5 "Harry Styles"
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-Remember that most functions can be **curried**. Technically, every Elm function takes only one argument, and (if more than one argument) returns another function.
+**We call `a` a Type Variable.** Think of type variables as a _placeholder_ for a specific Type.
+
+You'll often see `a` as a type variable, which stands for `any` Type. The type `a` can vary depending on [how the function is used](http://tinyurl.com/elm-lang-list-reverse), but once we decide what a is, that’s what it is everywhere.
 
 
 <!-- -------------------------------------------------------------------------
@@ -108,8 +105,7 @@ Remember that most functions can be **curried**. Technically, every Elm function
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-false
-
+**[Type variables](https://guide.elm-lang.org/types/reading_types#type-variables)** represent concrete types that have not been specified yet. For example `number` is a _constrained_ type variable. It can only be an `Int` or a `Float`.
 
 <!-- -------------------------------------------------------------------------
     ✎ Markdown

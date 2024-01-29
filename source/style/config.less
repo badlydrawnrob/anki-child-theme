@@ -1,12 +1,13 @@
 // Config ======================================================================
-// Sets up the `print-first-css` framework and variables: https://bit.ly/2TpdSaL
-// #1: pull in the mixins file, too
-// #2: pull in our Anki themes `main.css` file
+// Our original `Anki Theme` css file, which in turn includes `print-first-css`:
+// @ https://github.com/badlydrawnrob/print-first-css
+// @ https://github.com/badlydrawnrob/anki
+//
+// #1: From here you can override the `--css-variables`
+// #2: You can change this to `@import` the `.less` files if you prefer.
+// #3: Our `print-first-css` `grid-baseline.less` isn't relevant for Anki.
 
-@import (less) "../../node_modules/print-first-css/source/style/modules/mixins/grid-baseline";  // #1
-@import (less) "../../node_modules/print-first-css/build/style/print-first.css";
 @import (less) "../../node_modules/anki/build/style/main.css";
-// 
 
 
 // Modules =====================================================================

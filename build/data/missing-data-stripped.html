@@ -27,7 +27,8 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-<h1>What do we call this?</h1>
+<h1>How would we write the type annotation for
+<code>photoArray</code>?</h1>
 <!-- -------------------------------------------------------------------------
     ☆ Subtitle
 
@@ -39,7 +40,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-<p>false</p>
+<p><code>Array.fromList</code></p>
 <!-- -------------------------------------------------------------------------
     ★ Key point (code block or image)
 
@@ -49,8 +50,7 @@
       | Requires `{{c1::cloze}}` tag(s))
 
       A markdown fenced code block that will compile to our highlighted
-      code with Pandoc. Once you've compiled your code block, be sure to
-      add at least one cloze deletion in your Anki card:
+      code with Pandoc. Make sure to add at least one cloze deletion:
 
         `{{c1::the answer::HINT TEXT}}`
 
@@ -58,50 +58,56 @@
 
         @ https://codepen.io/testuser-247585903/pen/BabRjvb
 
-      Here's how to do it in the Anki editor:
+      You can add cloze deletion tags to the fenced code block and
+      they should work fine in Anki. You can also:
 
       1. `Toggle HTML Editor ⌘⇧X` (`‹›`) to enable rich text preview
-      2. Press the `[...]` or `[...]+` button to add a cloze deletion
+      2. Highlight the text that you'd like to convert to a cloze.
+      3. Press the `[...]` or `[...]+` button to add the cloze deletion
 -------------------------------------------------------------------------- -->
-<pre class="terminal"><code>type {{c1::alias}} User =
-  { name : String
-  , age : Int
-  }
-
-isOldEnoughToVote : User -&gt; Bool
-isOldEnoughToVote user =
-  user.age &gt;= 18
-
-isOldEnoughToVote { name = &quot;Heather&quot;, age = 32 }</code></pre>
-<pre class="terminal"><code>True</code></pre>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Array</span> <span class="kw">exposing</span> (<span class="dt">Array</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="kw">alias</span> <span class="dt">Photo</span> <span class="op">=</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  { <span class="fu">url</span> : <span class="dt">String</span> }</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">initialModel</span> : <span class="dt">Model</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">initialModel</span> <span class="op">=</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  { <span class="fu">photos</span> <span class="op">=</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    [ { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;1.jpeg&quot;</span> }</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">,</span> { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;2.jpeg&quot;</span> }</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">...</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">photoArray</span> : <span class="dt">Array</span> <span class="dt">Photo</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">photoArray</span> <span class="op">=</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Array</span><span class="op">.</span><span class="fu">fromList</span> <span class="fu">initialModel</span><span class="op">.</span><span class="fu">photos</span></span></code></pre></div>
+<pre class="terminal"><code>&gt; photoArray
+Array.fromList [{ url = &quot;1.jpeg&quot; },{ url = &quot;2.jpeg&quot; }]
+    : Array { url : String }</code></pre>
 <!-- -------------------------------------------------------------------------
     ★ Key point notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<ol type="1">
-<li>Our compiler will complain if <code>isOldEnoughToVote</code>
-receives anything other than a <code>User</code>.</li>
-<li>Our <code>{ record }</code> must be formatted the same as our
-<code>type alias</code>!</li>
-<li>Our <code>User</code> type alias means we can avoid repetition.</li>
-<li>Whenever we need to add a type annotation, we can replace a record
-with <code>User</code>.</li>
-</ol>
-<p>A <code>type alias</code> declaration assigns a name to a type, much
-as a constant assigns a name to a value. It also means we need fewer
-<code>-- comments</code> to explain what our code does. With well named
-Types and functions, it’s easier to reason about.</p>
+<p>Just like a list (<code>[]</code>), <code>Array</code> acts as a
+container for stuff. In this case, our “stuff” is a <code>Photo</code>
+type alias, which can also be read as a
+<code>List { url : String }</code>. We’ve created a shorthand for
+<code>Photo</code> so can write it as an <code>Array</code> (of)
+<code>Photo</code>.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p>More examples of <code>type alias</code> <a
-href="https://guide.elm-lang.org/types/type_aliases">can be found
-here</a>. See also <strong><a
-href="https://guide.elm-lang.org/types/type_aliases#record-constructors">Record
-constructors</a></strong>.</p>
+<p><code>Array</code> is different from a list. You can’t take the index
+of a list, like <code>list[0]</code> (you’d use <a
+href="https://package.elm-lang.org/packages/elm/core/latest/List#head"><code>head</code></a>
+instead). <code>Array</code> is also better <a
+href="https://package.elm-lang.org/packages/elm/core/latest/Array#get">at
+dealing with empty lists</a>!</p>
 <!-- -------------------------------------------------------------------------
     ✎ Markdown
 
@@ -119,15 +125,4 @@ constructors</a></strong>.</p>
       field, Anki will throw an error, and you might not be able to save
       your card.
 -------------------------------------------------------------------------- -->
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="kw">alias</span> <span class="dt">User</span> <span class="op">=</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  { <span class="fu">name</span> : <span class="dt">String</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">,</span> <span class="fu">age</span> : <span class="dt">Int</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">isOldEnoughToVote</span> : <span class="dt">User</span> <span class="op">-&gt;</span> <span class="dt">Bool</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">isOldEnoughToVote</span> <span class="fu">user</span> <span class="op">=</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">user</span><span class="op">.</span><span class="fu">age</span> <span class="op">&gt;=</span> <span class="dv">18</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">isOldEnoughToVote</span> { <span class="fu">name</span> <span class="op">=</span> <span class="st">&quot;Heather&quot;</span><span class="op">,</span> <span class="fu">age</span> <span class="op">=</span> <span class="dv">32</span> }</span></code></pre></div>
-<pre class="terminal"><code>True</code></pre>
+<p>false</p>
