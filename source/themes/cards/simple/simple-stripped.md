@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# What do we call `a`, as in `List a`?
+# What is this error and what do we add to fix it?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Types
+## Errors. How to debug?
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`List a`
+`case <strong>msg</strong> of`
 
 
 <!-- -------------------------------------------------------------------------
@@ -61,11 +61,25 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 ```elm
-[]  -- : List a
+type Msg
+  = ClickedPhoto String
+  | ClickedSize ThumbnailSize
+  | ClickedSurpriseMe
+```
+```terminal
+This `case` does not have branches for all possibilities:
 
-["one", "two", "three"]  -- : List String
-[1.5, 2.0, 3.1] -- : List Float
-[("one",2),("two",3)] -- : List ( String, number )
+151|>  case msg of
+152|>    ClickedPhoto url ->
+153|>      { model | selectedUrl = url }
+154|>    ClickedSurpriseMe ->
+155|>      { model | selectedUrl = "2.jpeg" }
+
+Missing possibilities include:
+
+    ClickedSize _
+
+I would have to crash if I saw one of those. Add branches for them!
 ```
 
 
@@ -83,10 +97,7 @@
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 ```elm
-fromList : List elementType -> Array elementType
-
-fromList : List Int -> Array Int
-fromList [1, 2, 3, 4]
+...
 ```
 
 
@@ -95,9 +106,7 @@ fromList [1, 2, 3, 4]
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-**We call `a` a Type Variable.** Think of type variables as a _placeholder_ for a specific Type.
-
-You'll often see `a` as a type variable, which stands for `any` Type. The type `a` can vary depending on [how the function is used](http://tinyurl.com/elm-lang-list-reverse), but once we decide what a is, that’s what it is everywhere.
+Here we're using a **Type Alias**. This allows us to create a **Union Type** for all possible branches of `Msg`. However, we need to make sure that all branches are accounted for in our `case msg of` control flow.
 
 
 <!-- -------------------------------------------------------------------------
@@ -105,7 +114,7 @@ You'll often see `a` as a type variable, which stands for `any` Type. The type `
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-**[Type variables](https://guide.elm-lang.org/types/reading_types#type-variables)** represent concrete types that have not been specified yet. For example `number` is a _constrained_ type variable. It can only be an `Int` or a `Float`.
+More about `case` expressions [here](https://elmprogramming.com/case-expression.html).
 
 <!-- -------------------------------------------------------------------------
     ✎ Markdown

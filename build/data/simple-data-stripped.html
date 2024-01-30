@@ -29,19 +29,19 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-<h1>What do we call <code>a</code>, as in <code>List a</code>?</h1>
+<h1>What is this error and what do we add to fix it?</h1>
 <!-- -------------------------------------------------------------------------
     ☆ Subtitle
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-<h2>Types</h2>
+<h2>Errors. How to debug?</h2>
 <!-- -------------------------------------------------------------------------
     ☆ Syntax (inline code)
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-<p><code>List a</code></p>
+<p><code>case &lt;strong&gt;msg&lt;/strong&gt; of</code></p>
 <!-- -------------------------------------------------------------------------
     ★ Sample (code block or image)
 
@@ -53,11 +53,23 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>[]  <span class="co">-- : List a</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>[<span class="st">&quot;one&quot;</span><span class="op">,</span> <span class="st">&quot;two&quot;</span><span class="op">,</span> <span class="st">&quot;three&quot;</span>]  <span class="co">-- : List String</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span><span class="op">.</span><span class="dv">5</span><span class="op">,</span> <span class="dv">2</span><span class="op">.</span><span class="dv">0</span><span class="op">,</span> <span class="dv">3</span><span class="op">.</span><span class="dv">1</span>] <span class="co">-- : List Float</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>[(<span class="st">&quot;one&quot;</span><span class="op">,</span><span class="dv">2</span>)<span class="op">,</span>(<span class="st">&quot;two&quot;</span><span class="op">,</span><span class="dv">3</span>)] <span class="co">-- : List ( String, number )</span></span></code></pre></div>
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Msg</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">=</span> <span class="dt">ClickedPhoto</span> <span class="dt">String</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">ClickedSize</span> <span class="dt">ThumbnailSize</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">ClickedSurpriseMe</span></span></code></pre></div>
+<pre class="terminal"><code>This `case` does not have branches for all possibilities:
+
+151|&gt;  case msg of
+152|&gt;    ClickedPhoto url -&gt;
+153|&gt;      { model | selectedUrl = url }
+154|&gt;    ClickedSurpriseMe -&gt;
+155|&gt;      { model | selectedUrl = &quot;2.jpeg&quot; }
+
+Missing possibilities include:
+
+    ClickedSize _
+
+I would have to crash if I saw one of those. Add branches for them!</code></pre>
 <!-- Back of card ======================================================== -->
 <!-- -------------------------------------------------------------------------
     ★ Key point (code block or image)
@@ -69,34 +81,27 @@ class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#c
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fromList</span> : <span class="dt">List</span> <span class="fu">elementType</span> <span class="op">-&gt;</span> <span class="dt">Array</span> <span class="fu">elementType</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fromList</span> : <span class="dt">List</span> <span class="dt">Int</span> <span class="op">-&gt;</span> <span class="dt">Array</span> <span class="dt">Int</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fromList</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fromList</span> : <span class="dt">List</span> <span class="fu">elementType</span> <span class="op">-&gt;</span> <span class="dt">Array</span> <span class="fu">elementType</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fromList</span> : <span class="dt">List</span> <span class="dt">Int</span> <span class="op">-&gt;</span> <span class="dt">Array</span> <span class="dt">Int</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fromList</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>]</span></code></pre></div>
 <!-- -------------------------------------------------------------------------
     ★ Key point notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p><strong>We call <code>a</code> a Type Variable.</strong> Think of
-type variables as a <em>placeholder</em> for a specific Type.</p>
-<p>You’ll often see <code>a</code> as a type variable, which stands for
-<code>any</code> Type. The type <code>a</code> can vary depending on <a
-href="http://tinyurl.com/elm-lang-list-reverse">how the function is
-used</a>, but once we decide what a is, that’s what it is
-everywhere.</p>
+<p>Here we’re using a <strong>Type Alias</strong>. This allows us to
+create a <strong>Union Type</strong> for all possible branches of
+<code>Msg</code>. However, we need to make sure that all branches are
+accounted for in our <code>case msg of</code> control flow.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p><strong><a
-href="https://guide.elm-lang.org/types/reading_types#type-variables">Type
-variables</a></strong> represent concrete types that have not been
-specified yet. For example <code>number</code> is a <em>constrained</em>
-type variable. It can only be an <code>Int</code> or a
-<code>Float</code>.</p>
+<p>More about <code>case</code> expressions <a
+href="https://elmprogramming.com/case-expression.html">here</a>.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Markdown
 
