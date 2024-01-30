@@ -5,3 +5,4 @@ viewThumbnail selectedUrl thumb =
       ..
       ] []
 ```
+
