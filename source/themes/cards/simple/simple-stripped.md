@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# What is this error and what do we add to fix it?
+# We have a `Msg` and `viewThumbnail` and our `onCLick` event calls the `ClickedPhoto` type variant (which looks like a function). What happens next?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Errors. How to debug?
+## Types
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`case <strong>msg</strong> of`
+`Msg`
 
 
 <!-- -------------------------------------------------------------------------
@@ -63,24 +63,18 @@
 ```elm
 type Msg
   = ClickedPhoto String
+  | GotSelectedIndex Int
   | ClickedSize ThumbnailSize
   | ClickedSurpriseMe
+
+viewThumbnail : String -> Photo -> Html Msg
+viewThumbnail selectedUrl thumb =
+  img [ ...
+      -- #1a: Click event creates a `Msg`
+      , onClick (ClickedPhoto thumb.url)  -- "1.jpeg"
+      ] []
 ```
-```terminal
-This `case` does not have branches for all possibilities:
 
-151|>  case msg of
-152|>    ClickedPhoto url ->
-153|>      { model | selectedUrl = url }
-154|>    ClickedSurpriseMe ->
-155|>      { model | selectedUrl = "2.jpeg" }
-
-Missing possibilities include:
-
-    ClickedSize _
-
-I would have to crash if I saw one of those. Add branches for them!
-```
 
 
 <!-- Back of card ======================================================== -->
@@ -97,7 +91,22 @@ I would have to crash if I saw one of those. Add branches for them!
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 ```elm
-...
+-- Update takes a `Msg`,
+-- Runs a `case` expression for each branch
+-- And returns a tuple of `Model, Cmd Msg`
+update : Msg -> Model -> ( Model, Cmd Msg)
+update msg model =
+  case msg of
+    GotSelectedIndex index ->
+      ...
+    ClickedSize size ->
+      ...
+      -- #1b: Change `selectedUrl` in our `Model` ...
+    ClickedPhoto url ->
+      ( { model | selectedUrl = url }, Cmd.none )
+      -- ... And continue with our branches
+    ClickedSurpriseMe ->
+      ...
 ```
 
 
@@ -106,15 +115,16 @@ I would have to crash if I saw one of those. Add branches for them!
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-Here we're using a **Type Alias**. This allows us to create a **Union Type** for all possible branches of `Msg`. However, we need to make sure that all branches are accounted for in our `case msg of` control flow.
+We can **destructure** our type variant by using `case`. Our `update` function takes a `Msg` from our `onClick` event which looks like `(ClickedPhoto thumb.url)` — a `ClickedPhoto String`.
 
+We simply set our `Model` record (passed through to the parameter `model`) to reset the `selectedUrl` to the image that we've just clicked!
 
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-More about `case` expressions [here](https://elmprogramming.com/case-expression.html).
+Here's [a simpler version of `case` expression](https://github.com/badlydrawnrob/elm-playground/blob/fd8bcb29bc0c6fc345b8dbc51b6dd16a7d95d33a/elm-in-action/03/src/PhotoGroove.elm#L125-L133) with just a `Msg` (no commands)
 
 <!-- -------------------------------------------------------------------------
     ✎ Markdown
