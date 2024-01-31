@@ -29,7 +29,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# How would we write the type annotation for `photoArray`?
+# Our list is empty `[]`. What will `Array.get` return?
 
 
 <!-- -------------------------------------------------------------------------
@@ -45,7 +45,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`Array.fromList`
+`Maybe`
 
 
 <!-- -------------------------------------------------------------------------
@@ -75,26 +75,17 @@
 ```elm
 import Array exposing (Array)
 
-type alias Photo =
-  { url : String }
-
-initialModel : Model
 initialModel =
-  { photos =
-    [ { url = "1.jpeg" }
-    , { url = "2.jpeg" }
-    ]
-  ...
-  }
+  { photos = [] }
 
-photoArray : Array Photo
 photoArray =
   Array.fromList initialModel.photos
 ```
 ```terminal
 > photoArray
-Array.fromList [{ url = "1.jpeg" },{ url = "2.jpeg" }]
-    : Array { url : String }
+Array.fromList [] : Array a
+> Array.get 2 photoArray
+Nothing : Maybe a
 ```
 
 
@@ -103,7 +94,10 @@ Array.fromList [{ url = "1.jpeg" },{ url = "2.jpeg" }]
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-Just like a list (`[]`), `Array` acts as a container for stuff. In this case, our "stuff" is a `Photo` type alias, which can also be read as a `List { url : String }`. We've created a shorthand for `Photo` so can write it as an `Array` (of) `Photo`.
+1. `Array.get` returns `Nothing`
+2. `Nothing` is a Union Type of `Maybe`
+3. `Maybe a` returns either `Just a` or `Nothing`
+4. `a` is a type variable that stands in for a concrete Type
 
 
 <!-- -------------------------------------------------------------------------
@@ -111,7 +105,7 @@ Just like a list (`[]`), `Array` acts as a container for stuff. In this case, ou
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-`Array` is different from a list. You can't take the index of a list, like `list[0]` (you'd use [`head`](https://package.elm-lang.org/packages/elm/core/latest/List#head) instead). `Array` is also better [at dealing with empty lists](https://package.elm-lang.org/packages/elm/core/latest/Array#get)!
+[More on `Maybe` here](https://guide.elm-lang.org/error_handling/maybe)
 
 
 <!-- -------------------------------------------------------------------------

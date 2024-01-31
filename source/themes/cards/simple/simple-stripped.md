@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# We have a `Msg` and `viewThumbnail` and our `onCLick` event calls the `ClickedPhoto` type variant (which looks like a function). What happens next?
+# What will we get if we type `Name` into the elm repl?
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`Msg`
+`type Msg`
 
 
 <!-- -------------------------------------------------------------------------
@@ -62,17 +62,9 @@
 -------------------------------------------------------------------------- -->
 ```elm
 type Msg
-  = ClickedPhoto String
-  | GotSelectedIndex Int
-  | ClickedSize ThumbnailSize
-  | ClickedSurpriseMe
-
-viewThumbnail : String -> Photo -> Html Msg
-viewThumbnail selectedUrl thumb =
-  img [ ...
-      -- #1a: Click event creates a `Msg`
-      , onClick (ClickedPhoto thumb.url)  -- "1.jpeg"
-      ] []
+    = Name String
+    | Age Int
+    | Reset
 ```
 
 
@@ -90,23 +82,13 @@ viewThumbnail selectedUrl thumb =
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
-```elm
--- Update takes a `Msg`,
--- Runs a `case` expression for each branch
--- And returns a tuple of `Model, Cmd Msg`
-update : Msg -> Model -> ( Model, Cmd Msg)
-update msg model =
-  case msg of
-    GotSelectedIndex index ->
-      ...
-    ClickedSize size ->
-      ...
-      -- #1b: Change `selectedUrl` in our `Model` ...
-    ClickedPhoto url ->
-      ( { model | selectedUrl = url }, Cmd.none )
-      -- ... And continue with our branches
-    ClickedSurpriseMe ->
-      ...
+```terminal
+> Name
+<function> : String -> User
+> Age
+<function> : Int -> User
+> Reset
+Reset : User
 ```
 
 
@@ -115,16 +97,18 @@ update msg model =
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-We can **destructure** our type variant by using `case`. Our `update` function takes a `Msg` from our `onClick` event which looks like `(ClickedPhoto thumb.url)` — a `ClickedPhoto String`.
+**Surprise, surpise! It returns a `<function>`**
 
-We simply set our `Model` record (passed through to the parameter `model`) to reset the `selectedUrl` to the image that we've just clicked!
+The next step would be to make sure we have a `case` statement for all of our `Msg` types. From there we could update our model, such as `{ name : String, age : Int }`.
+
+**[Here's the full program](https://ellie-app.com/qbz5CmRTgXqa1)**.
 
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-Here's [a simpler version of `case` expression](https://github.com/badlydrawnrob/elm-playground/blob/fd8bcb29bc0c6fc345b8dbc51b6dd16a7d95d33a/elm-in-action/03/src/PhotoGroove.elm#L125-L133) with just a `Msg` (no commands)
+Our type has `associated data`, so it's basically a container for "stuff". That stuff **should be strongly typed** (although you could use a `type variable`) and can be used as a function, for example, with `onClick`.
 
 <!-- -------------------------------------------------------------------------
     ✎ Markdown

@@ -29,9 +29,8 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-<h1>We have a <code>Msg</code> and <code>viewThumbnail</code> and our
-<code>onCLick</code> event calls the <code>ClickedPhoto</code> type
-variant (which looks like a function). What happens next?</h1>
+<h1>What will we get if we type <code>Name</code> into the elm
+repl?</h1>
 <!-- -------------------------------------------------------------------------
     ☆ Subtitle
 
@@ -43,7 +42,7 @@ variant (which looks like a function). What happens next?</h1>
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-<p><code>Msg</code></p>
+<p><code>type Msg</code></p>
 <!-- -------------------------------------------------------------------------
     ★ Sample (code block or image)
 
@@ -56,17 +55,9 @@ variant (which looks like a function). What happens next?</h1>
 -------------------------------------------------------------------------- -->
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Msg</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">=</span> <span class="dt">ClickedPhoto</span> <span class="dt">String</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">GotSelectedIndex</span> <span class="dt">Int</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">ClickedSize</span> <span class="dt">ThumbnailSize</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">ClickedSurpriseMe</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">viewThumbnail</span> : <span class="dt">String</span> <span class="op">-&gt;</span> <span class="dt">Photo</span> <span class="op">-&gt;</span> <span class="dt">Html</span> <span class="dt">Msg</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">viewThumbnail</span> <span class="fu">selectedUrl</span> <span class="fu">thumb</span> <span class="op">=</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">img</span> [ <span class="op">...</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">-- #1a: Click event creates a `Msg`</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="op">,</span> <span class="fu">onClick</span> (<span class="dt">ClickedPhoto</span> <span class="fu">thumb</span><span class="op">.</span><span class="fu">url</span>)  <span class="co">-- &quot;1.jpeg&quot;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      ] []</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">=</span> <span class="dt">Name</span> <span class="dt">String</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="dt">Age</span> <span class="dt">Int</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="dt">Reset</span></span></code></pre></div>
 <!-- Back of card ======================================================== -->
 <!-- -------------------------------------------------------------------------
     ★ Key point (code block or image)
@@ -78,45 +69,33 @@ class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#c
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Update takes a `Msg`,</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- Runs a `case` expression for each branch</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- And returns a tuple of `Model, Cmd Msg`</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span> : <span class="dt">Msg</span> <span class="op">-&gt;</span> <span class="dt">Model</span> <span class="op">-&gt;</span> ( <span class="dt">Model</span><span class="op">,</span> <span class="dt">Cmd</span> <span class="dt">Msg</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">update</span> <span class="fu">msg</span> <span class="fu">model</span> <span class="op">=</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="fu">msg</span> <span class="cf">of</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">GotSelectedIndex</span> <span class="fu">index</span> <span class="op">-&gt;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">ClickedSize</span> <span class="fu">size</span> <span class="op">-&gt;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">-- #1b: Change `selectedUrl` in our `Model` ...</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">ClickedPhoto</span> <span class="fu">url</span> <span class="op">-&gt;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      ( { <span class="fu">model</span> <span class="op">|</span> <span class="fu">selectedUrl</span> <span class="op">=</span> <span class="fu">url</span> }<span class="op">,</span> <span class="dt">Cmd</span><span class="op">.</span><span class="fu">none</span> )</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">-- ... And continue with our branches</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">ClickedSurpriseMe</span> <span class="op">-&gt;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span></span></code></pre></div>
+<pre class="terminal"><code>&gt; Name
+&lt;function&gt; : String -&gt; User
+&gt; Age
+&lt;function&gt; : Int -&gt; User
+&gt; Reset
+Reset : User</code></pre>
 <!-- -------------------------------------------------------------------------
     ★ Key point notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p>We can <strong>destructure</strong> our type variant by using
-<code>case</code>. Our <code>update</code> function takes a
-<code>Msg</code> from our <code>onClick</code> event which looks like
-<code>(ClickedPhoto thumb.url)</code> — a
-<code>ClickedPhoto String</code>.</p>
-<p>We simply set our <code>Model</code> record (passed through to the
-parameter <code>model</code>) to reset the <code>selectedUrl</code> to
-the image that we’ve just clicked!</p>
+<p><strong>Surprise, surpise! It returns a
+<code>&lt;function&gt;</code></strong></p>
+<p>The next step would be to make sure we have a <code>case</code>
+statement for all of our <code>Msg</code> types. From there we could
+update our model, such as <code>{ name : String, age : Int }</code>.</p>
+<p><strong><a href="https://ellie-app.com/qbz5CmRTgXqa1">Here’s the full
+program</a></strong>.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p>Here’s <a
-href="https://github.com/badlydrawnrob/elm-playground/blob/fd8bcb29bc0c6fc345b8dbc51b6dd16a7d95d33a/elm-in-action/03/src/PhotoGroove.elm#L125-L133">a
-simpler version of <code>case</code> expression</a> with just a
-<code>Msg</code> (no commands)</p>
+<p>Our type has <code>associated data</code>, so it’s basically a
+container for “stuff”. That stuff <strong>should be strongly
+typed</strong> (although you could use a <code>type variable</code>) and
+can be used as a function, for example, with <code>onClick</code>.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Markdown
 
