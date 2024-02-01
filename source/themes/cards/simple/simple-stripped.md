@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# What will we get if we type `Name` into the elm repl?
+# Here's a `Type` we've created called `ThumbnailSize`. How might we store these in a record?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Types
+## Types, records
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`type Msg`
+`ThumbnailSize`
 
 
 <!-- -------------------------------------------------------------------------
@@ -61,10 +61,10 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 ```elm
-type Msg
-    = Name String
-    | Age Int
-    | Reset
+type ThumbnailSize
+  = Small
+  | Medium
+  | Large
 ```
 
 
@@ -82,13 +82,8 @@ type Msg
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
-```terminal
-> Name
-<function> : String -> User
-> Age
-<function> : Int -> User
-> Reset
-Reset : User
+```elm
+chosenSize = Medium
 ```
 
 
@@ -97,18 +92,14 @@ Reset : User
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-**Surprise, surpise! It returns a `<function>`**
-
-The next step would be to make sure we have a `case` statement for all of our `Msg` types. From there we could update our model, such as `{ name : String, age : Int }`.
-
-**[Here's the full program](https://ellie-app.com/qbz5CmRTgXqa1)**.
+**So simple!** You can store type variants [as record entries](https://guide.elm-lang.org/types/custom_types.html#custom-types). Check that link for an even simpler way to do this (without records).
 
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-Our type has `associated data`, so it's basically a container for "stuff". That stuff **should be strongly typed** (although you could use a `type variable`) and can be used as a function, for example, with `onClick`.
+Here's [some more information on `Records`](https://elm-lang.org/docs/records).
 
 <!-- -------------------------------------------------------------------------
     ✎ Markdown
