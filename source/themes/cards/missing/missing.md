@@ -72,6 +72,9 @@ What do we call this?
       1. `Toggle HTML Editor ⌘⇧X` (`‹›`) to enable rich text preview
       2. Highlight the text that you'd like to convert to a cloze.
       3. Press the `[...]` or `[...]+` button to add the cloze deletion
+
+      !# Warning: These buttons may break your code:
+        @ https://github.com/badlydrawnrob/anki/issues/132
 -------------------------------------------------------------------------- -->
 ## ★ Key point (code block or image)
 

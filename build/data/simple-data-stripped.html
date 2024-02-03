@@ -29,20 +29,19 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-<h1>Here’s a <code>Type</code> we’ve created called
-<code>ThumbnailSize</code>. How might we store these in a record?</h1>
+<h1>What’s special about this <code>case</code> expression?</h1>
 <!-- -------------------------------------------------------------------------
     ☆ Subtitle
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-<h2>Types, records</h2>
+<h2>Case</h2>
 <!-- -------------------------------------------------------------------------
     ☆ Syntax (inline code)
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-<p><code>ThumbnailSize</code></p>
+<p><code>case</code></p>
 <!-- -------------------------------------------------------------------------
     ★ Sample (code block or image)
 
@@ -54,10 +53,27 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">ThumbnailSize</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">=</span> <span class="dt">Small</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Medium</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">|</span> <span class="dt">Large</span></span></code></pre></div>
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">photoList</span> <span class="op">=</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  [ { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;1.jpeg&quot;</span> }</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">,</span> { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;2.jpeg&quot;</span> }</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">,</span> { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;3.jpeg&quot;</span> }</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">photoArray</span> : <span class="dt">Array</span> { <span class="fu">url</span> : <span class="dt">String</span> }</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">photoArray</span> <span class="op">=</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Array</span><span class="op">.</span><span class="fu">fromList</span> <span class="fu">photoList</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">getPhotoUrl</span> : <span class="dt">Int</span> <span class="op">-&gt;</span> <span class="dt">String</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">getPhotoUrl</span> <span class="fu">index</span> <span class="op">=</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="dt">Array</span><span class="op">.</span><span class="fu">get</span> <span class="fu">index</span> <span class="fu">photoArray</span> <span class="cf">of</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Just</span> <span class="fu">photo</span> <span class="op">-&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">photo</span><span class="op">.</span><span class="fu">url</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Nothing</span> <span class="op">-&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;&quot;</span></span></code></pre></div>
+<pre class="terminal"><code>&gt; getPhotoUrl 2
+&quot;3.jpeg&quot; : String
+&gt; getPhotoUrl 3
+&quot;&quot; : String</code></pre>
 <!-- Back of card ======================================================== -->
 <!-- -------------------------------------------------------------------------
     ★ Key point (code block or image)
@@ -69,24 +85,34 @@ class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#c
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chosenSize</span> <span class="op">=</span> <span class="dt">Medium</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- `Array.get` returns either:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">--    Just a</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">--    Nothing</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get</span> : <span class="dt">Int</span> <span class="op">-&gt;</span> <span class="dt">Array</span> <span class="fu">a</span> <span class="op">-&gt;</span> <span class="dt">Maybe</span> <span class="fu">a</span></span></code></pre></div>
 <!-- -------------------------------------------------------------------------
     ★ Key point notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p><strong>So simple!</strong> You can store type variants <a
-href="https://guide.elm-lang.org/types/custom_types.html#custom-types">as
-record entries</a>. Check that link for an even simpler way to do this
-(without records).</p>
+<ol type="1">
+<li><strong>We’re using a function <em>inside</em> a
+<code>case expression</code>. You can do that!</strong></li>
+<li><code>[1, 2, 3]</code> Elm doesn’t allow you to call the index of a
+list!</li>
+<li><code>[]</code> An Array can return <code>Nothing</code> if our
+<code>index</code> is out of bounds.</li>
+</ol>
+<p>When we need to find the <code>index</code> of a list, it’s a safer
+bet to use <code>Array</code>.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p>Here’s <a href="https://elm-lang.org/docs/records">some more
-information on <code>Records</code></a>.</p>
+<p>More examples of <a
+href="https://elmprogramming.com/case-expression.html"><code>case</code>
+expressions</a>.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Markdown
 

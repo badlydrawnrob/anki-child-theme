@@ -1,11 +1,12 @@
 {
   "name": "anki-child-theme",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Extending the Anki Themes repo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "css": "npx lessc source/style/main.less ./build/style/main.css",
+    "setup": "npm install anki && npm install print-first-css",
     "pandoc": "npm run readme && npm run pandoc-code && npm run simple-data && npm run missing-data",
     "pandoc-stripped": "npm run simple-data-stripped && npm run missing-data-stripped",
     "pandoc-code": "pandoc source/pandoc/code.md -o ./build/data/code.html",
@@ -28,7 +29,7 @@
   },
   "homepage": "https://github.com/badlydrawnrob/anki#readme",
   "devDependencies": {
-    "anki": "github:badlydrawnrob/anki#f97d439",
+    "anki": "github:badlydrawnrob/anki#5ec1695",
     "less": "^4.2.0",
     "print-first-css": "github:badlydrawnrob/print-first-css#dafa5ae"
   }

@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# Here's a `Type` we've created called `ThumbnailSize`. How might we store these in a record?
+# What's special about this `case` expression?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Types, records
+## Case
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`ThumbnailSize`
+`case`
 
 
 <!-- -------------------------------------------------------------------------
@@ -61,10 +61,29 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 ```elm
-type ThumbnailSize
-  = Small
-  | Medium
-  | Large
+photoList =
+  [ { url = "1.jpeg" }
+  , { url = "2.jpeg" }
+  , { url = "3.jpeg" }
+  ]
+
+photoArray : Array { url : String }
+photoArray =
+  Array.fromList photoList
+
+getPhotoUrl : Int -> String
+getPhotoUrl index =
+  case Array.get index photoArray of
+    Just photo ->
+      photo.url
+    Nothing ->
+      ""
+```
+```terminal
+> getPhotoUrl 2
+"3.jpeg" : String
+> getPhotoUrl 3
+"" : String
 ```
 
 
@@ -83,7 +102,10 @@ type ThumbnailSize
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 ```elm
-chosenSize = Medium
+-- `Array.get` returns either:
+--    Just a
+--    Nothing
+get : Int -> Array a -> Maybe a
 ```
 
 
@@ -92,14 +114,18 @@ chosenSize = Medium
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-**So simple!** You can store type variants [as record entries](https://guide.elm-lang.org/types/custom_types.html#custom-types). Check that link for an even simpler way to do this (without records).
+1. **We're using a function _inside_ a `case expression`. You can do that!**
+2. `[1, 2, 3]` Elm doesn't allow you to call the index of a list!
+2. `[]` An Array can return `Nothing` if our `index` is out of bounds.
+
+When we need to find the `index` of a list, it's a safer bet to use `Array`.
 
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-Here's [some more information on `Records`](https://elm-lang.org/docs/records).
+More examples of [`case` expressions](https://elmprogramming.com/case-expression.html).
 
 <!-- -------------------------------------------------------------------------
     ✎ Markdown

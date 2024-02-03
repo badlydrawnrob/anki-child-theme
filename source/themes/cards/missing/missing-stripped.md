@@ -29,7 +29,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# Our list is empty `[]`. What will `Array.get` return?
+# We've changed from `Browser.sandbox` to `Browser.element`. What's changed?
 
 
 <!-- -------------------------------------------------------------------------
@@ -37,7 +37,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Types
+## Commands
 
 
 <!-- -------------------------------------------------------------------------
@@ -45,7 +45,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`Maybe`
+`Cmd`
 
 
 <!-- -------------------------------------------------------------------------
@@ -71,21 +71,49 @@
       1. `Toggle HTML Editor ⌘⇧X` (`‹›`) to enable rich text preview
       2. Highlight the text that you'd like to convert to a cloze.
       3. Press the `[...]` or `[...]+` button to add the cloze deletion
+
+      !# Warning: These buttons may break your code:
+        @ https://github.com/badlydrawnrob/anki/issues/132
 -------------------------------------------------------------------------- -->
 ```elm
+-- other imports here
+import Browser
+import Html exposing (Html, button, div, text, img)
+import Html.Attributes exposing (..)
+import Html.Events exposing (onClick)
+import Random
 import Array exposing (Array)
 
-initialModel =
-  { photos = [] }
+-- A bunch of other stuff:
+--   2. A `viewThumbnail string` -> `Html Msg` (an image)
+--   3. A `getPhoto` that returns `Just Photo` (i.e: "1.jpeg")
+--   4. Of course, our `Model`, `View`, `Update` etc
 
-photoArray =
-  Array.fromList initialModel.photos
-```
-```terminal
-> photoArray
-Array.fromList [] : Array a
-> Array.get 2 photoArray
-Nothing : Maybe a
+type Msg
+    = ClickedButton
+    | GotSelectedIndex Int
+
+randomPhoto : Random.Generator Int
+randomPhoto =
+  Random.int 0 (Array.length arrayOfPhotos - 1)  -- Returns a random index
+
+update : Msg -> Model -> (Model, Cmd Msg)
+update msg model =
+  case msg of
+    ClickedButton ->  -- Generates a `Cmd` and returns a `Msg`
+      ( model, Random.generate GotSelectedIndex randomPhoto )  -- Gets random Photo
+    GotSelectedIndex index ->  -- Updates the model from a `Msg`
+      ( { model | selectedUrl = (getPhoto index) }, Cmd.none )  -- Returns a Photo
+
+
+main : Program () Model Msg
+main =
+  Browser.element
+    { init = \flags -> ( initialModel, Cmd.none )
+    , view = view
+    , update = update
+    , subscriptions = \model -> Sub.none
+  }
 ```
 
 
@@ -94,10 +122,13 @@ Nothing : Maybe a
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-1. `Array.get` returns `Nothing`
-2. `Nothing` is a Union Type of `Maybe`
-3. `Maybe a` returns either `Just a` or `Nothing`
-4. `a` is a type variable that stands in for a concrete Type
+1. `Browser.sandbox` lets us "stay within the world of Elm"
+2. To use functions that have side-effects like `Random` we need `Cmd`.
+3. For _that_, we switch from `Browser.sandbox` to [`Browser.element`](https://guide.elm-lang.org/effects/)
+4. This allows us to interact with the outside world (and it's data).
+
+You can see the [simplified full program here](https://ellie-app.com/qbXb7HZtxpya1).
+
 
 
 <!-- -------------------------------------------------------------------------
@@ -105,7 +136,7 @@ Nothing : Maybe a
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-[More on `Maybe` here](https://guide.elm-lang.org/error_handling/maybe)
+You can see [how we transformed a update function](http://tinyurl.com/elm-lang-convert-update-tuple) with a regular `Model` to a tuple with a `(Model, Cmd Msg)`. **More on [`commands` here](https://elmprogramming.com/commands.html)**
 
 
 <!-- -------------------------------------------------------------------------

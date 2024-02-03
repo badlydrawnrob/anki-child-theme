@@ -179,8 +179,9 @@
 programming theme</a></p>
 <h2 id="important-files">Important files</h2>
 <blockquote>
-<p>Make sure you’ve run <code>npm run build</code> first!<a href="#fn1"
-class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Make sure you’ve run <code>npm run setup</code> and
+<code>npm run build</code> first!<a href="#fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
 <ul>
 <li><strong>Demo:</strong>
@@ -240,10 +241,11 @@ role="doc-endnotes">
 <hr />
 <ol>
 <li id="fn1"><p>Anki and Print-first-css <code>devDependancies</code>
-might need to be udpated manually by running
-<code>npm install anki</code>, for example. <code>npm update anki</code>
-doesn’t update to the latest version as expected.<a href="#fnref1"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+might will be updated manually by running <code>npm run setup</code>,
+for example. <code>npm update anki</code> doesn’t update to the latest
+version as expected when using Github repos. If anyone knows a better
+way of doing this, let me know!<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>The stripped down version compiles a lot less code, so
 is easier to read. This comes with the trade off that it doesn’t look as
 pretty in the browser (for instance, the code highlighting

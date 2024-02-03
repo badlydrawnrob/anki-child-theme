@@ -6,7 +6,7 @@ An extension of [Anki programming theme](https://github.com/badlydrawnrob/anki)
 
 ## Important files
 
-> Make sure you've run `npm run build` first![^1]
+> Make sure you've run `npm run setup` and `npm run build` first![^1]
 
 - **Demo:**
     - [`simple.html`](../node_modules/anki/build/demo/simple.html)
@@ -35,6 +35,6 @@ An extension of [Anki programming theme](https://github.com/badlydrawnrob/anki)
 
 
 
-[^1]: Anki and Print-first-css `devDependancies` might need to be udpated manually by running `npm install anki`, for example. `npm update anki` doesn't update to the latest version as expected.
+[^1]: Anki and Print-first-css `devDependancies` might will be updated manually by running `npm run setup`, for example. `npm update anki` doesn't update to the latest version as expected when using Github repos. If anyone knows a better way of doing this, let me know!
 
 [^2]: The stripped down version compiles a lot less code, so is easier to read. This comes with the trade off that it doesn't look as pretty in the browser (for instance, the code highlighting `.classes` will be added, but you won't be able to preview it in the browser).
