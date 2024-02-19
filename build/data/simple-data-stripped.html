@@ -29,19 +29,19 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-<h1>What’s special about this <code>case</code> expression?</h1>
+<h1>Find the <code>|&gt;</code> pipeline operator. What does it do?</h1>
 <!-- -------------------------------------------------------------------------
     ☆ Subtitle
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-<h2>Case</h2>
+<h2>Pipeline</h2>
 <!-- -------------------------------------------------------------------------
     ☆ Syntax (inline code)
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-<p><code>case</code></p>
+<p><code>|&gt;</code></p>
 <!-- -------------------------------------------------------------------------
     ★ Sample (code block or image)
 
@@ -53,27 +53,12 @@
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">photoList</span> <span class="op">=</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  [ { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;1.jpeg&quot;</span> }</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">,</span> { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;2.jpeg&quot;</span> }</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">,</span> { <span class="fu">url</span> <span class="op">=</span> <span class="st">&quot;3.jpeg&quot;</span> }</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">photoArray</span> : <span class="dt">Array</span> { <span class="fu">url</span> : <span class="dt">String</span> }</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">photoArray</span> <span class="op">=</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Array</span><span class="op">.</span><span class="fu">fromList</span> <span class="fu">photoList</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">getPhotoUrl</span> : <span class="dt">Int</span> <span class="op">-&gt;</span> <span class="dt">String</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">getPhotoUrl</span> <span class="fu">index</span> <span class="op">=</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="dt">Array</span><span class="op">.</span><span class="fu">get</span> <span class="fu">index</span> <span class="fu">photoArray</span> <span class="cf">of</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Just</span> <span class="fu">photo</span> <span class="op">-&gt;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">photo</span><span class="op">.</span><span class="fu">url</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Nothing</span> <span class="op">-&gt;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;&quot;</span></span></code></pre></div>
-<pre class="terminal"><code>&gt; getPhotoUrl 2
-&quot;3.jpeg&quot; : String
-&gt; getPhotoUrl 3
-&quot;&quot; : String</code></pre>
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>residents <span class="op">=</span> {<span class="st">&#39;Puffin&#39;</span>: <span class="dv">104</span>, <span class="st">&#39;Sloth&#39;</span>: <span class="dv">105</span>, <span class="st">&#39;Burmese Python&#39;</span>: <span class="dv">106</span>}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>residents[<span class="st">&#39;Burmese Python&#39;</span>] <span class="op">=</span> <span class="dv">98</span><span class="op">;</span> <span class="co"># update existing entry</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>residents[<span class="st">&#39;Puffin&#39;</span>] <span class="op">=</span> <span class="dv">36</span><span class="op">;</span> <span class="co"># Add new entry</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> <span class="st">&quot;residents[&#39;Burmese Python&#39;]: &quot;</span>, residents[<span class="st">&#39;Burmese Python&#39;</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> <span class="st">&quot;residents[&#39;Puffin&#39;]: &quot;</span>, residents[<span class="st">&#39;Puffin&#39;</span>]</span></code></pre></div>
 <!-- Back of card ======================================================== -->
 <!-- -------------------------------------------------------------------------
     ★ Key point (code block or image)
@@ -85,34 +70,28 @@ class="sourceCode elm"><code class="sourceCode elm"><span id="cb1-1"><a href="#c
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode elm"><code class="sourceCode elm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- `Array.get` returns either:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">--    Just a</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">--    Nothing</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get</span> : <span class="dt">Int</span> <span class="op">-&gt;</span> <span class="dt">Array</span> <span class="fu">a</span> <span class="op">-&gt;</span> <span class="dt">Maybe</span> <span class="fu">a</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">init</span> <span class="op">=</span> ( { <span class="fu">name</span> <span class="op">=</span> <span class="st">&quot;Harry&quot;</span><span class="op">,</span> <span class="fu">age</span> <span class="op">=</span> <span class="dv">41</span> }<span class="op">,</span> <span class="dt">Cmd</span><span class="op">.</span><span class="fu">none</span> )</span></code></pre></div>
 <!-- -------------------------------------------------------------------------
     ★ Key point notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<ol type="1">
-<li><strong>We’re using a function <em>inside</em> a
-<code>case expression</code>. You can do that!</strong></li>
-<li><code>[1, 2, 3]</code> Elm doesn’t allow you to call the index of a
-list!</li>
-<li><code>[]</code> An Array can return <code>Nothing</code> if our
-<code>index</code> is out of bounds.</li>
-</ol>
-<p>When we need to find the <code>index</code> of a list, it’s a safer
-bet to use <code>Array</code>.</p>
+<p><strong>A pipeline operator <code>|&gt;</code> allows us to pass
+values</strong> into another functions argument. They can make code look
+cleaner, and easier to read/write. Remember, functions can be
+<em>curried</em>, so that <code>Tuple.pair model</code> returns a
+function that takes one or more arguments:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode elm"><code class="sourceCode elm"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span><span class="fu">function</span><span class="op">&gt;</span> : <span class="fu">b</span> <span class="op">-&gt;</span> ( { <span class="fu">age</span> : <span class="fu">number</span><span class="op">,</span> <span class="fu">name</span> : <span class="dt">String</span> }<span class="op">,</span> <span class="fu">b</span> )</span></code></pre></div>
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-<p>More examples of <a
-href="https://elmprogramming.com/case-expression.html"><code>case</code>
-expressions</a>.</p>
+<p>Here’s a better explaination of <a
+href="https://harfangk.github.io/2018/01/27/elm-function-operators.html">pipeline
+operators</a>.</p>
 <!-- -------------------------------------------------------------------------
     ✎ Markdown
 

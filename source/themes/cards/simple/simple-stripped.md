@@ -31,7 +31,7 @@
 
     ⤷ `string` (auto wrapped with a `H1` tag)
 -------------------------------------------------------------------------- -->
-# What's special about this `case` expression?
+# Find the `|>` pipeline operator. What does it do?
 
 
 <!-- -------------------------------------------------------------------------
@@ -39,7 +39,7 @@
 
     ⤷ `string` (auto wrapped with a `H2` tag)
 -------------------------------------------------------------------------- -->
-## Case
+## Pipeline
 
 
 <!-- -------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 
     ⤷ `code string` (auto wrapped with <p><code> tag)
 -------------------------------------------------------------------------- -->
-`case`
+`|>`
 
 
 <!-- -------------------------------------------------------------------------
@@ -60,30 +60,13 @@
       A markdown fenced code block that will compile to our highlighted
       code with Pandoc. What does this code do?
 -------------------------------------------------------------------------- -->
-```elm
-photoList =
-  [ { url = "1.jpeg" }
-  , { url = "2.jpeg" }
-  , { url = "3.jpeg" }
-  ]
+```python
+residents = {'Puffin': 104, 'Sloth': 105, 'Burmese Python': 106}
+residents['Burmese Python'] = 98; # update existing entry
+residents['Puffin'] = 36; # Add new entry
 
-photoArray : Array { url : String }
-photoArray =
-  Array.fromList photoList
-
-getPhotoUrl : Int -> String
-getPhotoUrl index =
-  case Array.get index photoArray of
-    Just photo ->
-      photo.url
-    Nothing ->
-      ""
-```
-```terminal
-> getPhotoUrl 2
-"3.jpeg" : String
-> getPhotoUrl 3
-"" : String
+print "residents['Burmese Python']: ", residents['Burmese Python']
+print "residents['Puffin']: ", residents['Puffin']
 ```
 
 
@@ -102,10 +85,7 @@ getPhotoUrl index =
       code with Pandoc. The output or answer to the above question.
 -------------------------------------------------------------------------- -->
 ```elm
--- `Array.get` returns either:
---    Just a
---    Nothing
-get : Int -> Array a -> Maybe a
+init = ( { name = "Harry", age = 41 }, Cmd.none )
 ```
 
 
@@ -114,18 +94,18 @@ get : Int -> Array a -> Maybe a
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-1. **We're using a function _inside_ a `case expression`. You can do that!**
-2. `[1, 2, 3]` Elm doesn't allow you to call the index of a list!
-2. `[]` An Array can return `Nothing` if our `index` is out of bounds.
+**A pipeline operator `|>` allows us to pass values** into another functions argument. They can make code look cleaner, and easier to read/write. Remember, functions can be _curried_, so that `Tuple.pair model` returns a function that takes one or more arguments:
 
-When we need to find the `index` of a list, it's a safer bet to use `Array`.
+```elm
+<function> : b -> ( { age : number, name : String }, b )
+```
 
 <!-- -------------------------------------------------------------------------
     ✎ Other notes
 
     ⤷ `rich html`
 -------------------------------------------------------------------------- -->
-More examples of [`case` expressions](https://elmprogramming.com/case-expression.html).
+Here's a better explaination of [pipeline operators](https://harfangk.github.io/2018/01/27/elm-function-operators.html).
 
 <!-- -------------------------------------------------------------------------
     ✎ Markdown
